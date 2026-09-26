@@ -139,9 +139,9 @@ header{
   max-width:980px;
   margin:18px 0 24px;
   font-size:clamp(56px,7.2vw,102px);
-  line-height:.91;
+  line-height:.98;
   font-weight:800;
-  letter-spacing:-.067em;
+  letter-spacing:-.018em;
   text-transform:uppercase;
 }
 .hero h1:after{
@@ -251,9 +251,9 @@ section{padding:108px 0}
 .section-head h2{
   margin:11px 0 16px;
   font-size:clamp(40px,5.4vw,74px);
-  line-height:.96;
+  line-height:1.01;
   font-weight:800;
-  letter-spacing:-.058em;
+  letter-spacing:-.016em;
   text-transform:uppercase;
 }
 .section-head p{max-width:760px;margin:0;color:var(--muted);font-size:16px}
@@ -304,7 +304,7 @@ section{padding:108px 0}
   font-size:25px;
   line-height:1.12;
   font-weight:700;
-  letter-spacing:-.04em;
+  letter-spacing:-.012em;
 }
 .card p{margin:0;color:var(--muted);font-size:14px;line-height:1.58}
 .card .more{
@@ -326,7 +326,7 @@ section{padding:108px 0}
   font-size:clamp(34px,4.2vw,52px);
   line-height:1.02;
   font-weight:800;
-  letter-spacing:-.047em;
+  letter-spacing:-.014em;
 }
 .article h3{
   margin:42px 0 12px;
@@ -334,7 +334,7 @@ section{padding:108px 0}
   font-size:25px;
   line-height:1.16;
   font-weight:700;
-  letter-spacing:-.032em;
+  letter-spacing:-.012em;
 }
 .article p,.article li{color:#3f3f3d;font-size:16px;line-height:1.74}
 .article ul{padding-left:22px}
@@ -439,9 +439,9 @@ section{padding:108px 0}
   max-width:780px;
   margin:0 0 10px;
   font-size:clamp(42px,5vw,70px);
-  line-height:.94;
+  line-height:1.0;
   font-weight:800;
-  letter-spacing:-.06em;
+  letter-spacing:-.016em;
   text-transform:uppercase;
 }
 .cta p{margin:0;color:#4a2a15}
@@ -489,7 +489,7 @@ section{padding:108px 0}
   font-size:27px;
   line-height:1.12;
   font-weight:700;
-  letter-spacing:-.035em;
+  letter-spacing:-.012em;
 }
 .ethics p{color:#aaa;font-size:14px}
 .contact .links a{background:#303030;color:#fff}
@@ -538,9 +538,9 @@ footer{
   .topbar .container span:last-child{display:none}
   .nav{min-height:70px}
   .logo img{height:42px}
-  .phone{min-height:38px;padding:0 13px;font-size:10px}
+  .phone{min-height:38px;padding:0 11px;font-size:9px;max-width:62vw;overflow:hidden;text-overflow:ellipsis}
   .hero .container{padding-top:54px;padding-bottom:54px}
-  .hero h1{font-size:46px;line-height:.94;letter-spacing:-.06em}
+  .hero h1{font-size:44px;line-height:1.01;letter-spacing:-.01em}
   .lead{font-size:16px}
   .visual{display:none}
   section{padding:72px 0}
@@ -576,7 +576,7 @@ footer{
   font-family:"Inter Tight","Manrope",Arial,sans-serif;
   font-size:20px;
   line-height:1.1;
-  letter-spacing:-.03em;
+  letter-spacing:-.01em;
 }
 .quick-nav a{
   display:block;
