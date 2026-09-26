@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://advokat-strelkov.ru/sitemap.xml
