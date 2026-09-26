@@ -555,3 +555,117 @@ footer{
   .footer{display:block}
   .footer span{display:block;margin:6px 0}
 }
+
+
+/* Навигация по длинным страницам */
+.service-tools{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:28px;
+  margin-bottom:26px;
+}
+.quick-nav,
+.checklist{
+  background:#f4f4f1;
+  padding:26px;
+}
+.quick-nav strong,
+.checklist strong{
+  display:block;
+  margin-bottom:14px;
+  font-family:"Inter Tight","Manrope",Arial,sans-serif;
+  font-size:20px;
+  line-height:1.1;
+  letter-spacing:-.03em;
+}
+.quick-nav a{
+  display:block;
+  padding:10px 0;
+  border-bottom:1px solid #d8d8d3;
+  color:#111;
+  font-size:13px;
+  font-weight:650;
+}
+.quick-nav a:last-child{border-bottom:0}
+.quick-nav a:hover{color:var(--accent)}
+.checklist ul{margin:0;padding-left:20px}
+.checklist li{margin:8px 0;color:#4d4d49;font-size:14px;line-height:1.55}
+
+/* Блок срочной навигации на главной */
+.urgent-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.urgent-card{
+  display:block;
+  min-height:190px;
+  padding:26px;
+  background:#fff;
+  transition:.2s ease;
+}
+.urgent-card:hover{background:var(--accent-soft)}
+.urgent-card .num{
+  display:block;
+  margin-bottom:28px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.urgent-card h3{
+  margin:0 0 9px;
+  font-family:"Inter Tight","Manrope",Arial,sans-serif;
+  font-size:24px;
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+.urgent-card p{margin:0;color:#72726f;font-size:13px;line-height:1.5}
+
+/* Аккордеоны: текст остаётся в HTML и доступен поисковикам */
+.accordion{
+  margin:18px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.accordion + .accordion{border-top:0;margin-top:-18px}
+.accordion summary{
+  position:relative;
+  cursor:pointer;
+  list-style:none;
+  padding:17px 42px 17px 0;
+  color:#111;
+  font-size:13px;
+  font-weight:750;
+}
+.accordion summary::-webkit-details-marker{display:none}
+.accordion summary:after{
+  content:"+";
+  position:absolute;
+  right:4px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--accent);
+  font-size:24px;
+  font-weight:500;
+}
+.accordion[open] summary:after{content:"−"}
+.accordion-body{padding:0 0 18px}
+.accordion-body p:first-child{margin-top:0}
+
+.dark-panel .accordion{border-color:#393939}
+.dark-panel .accordion summary{color:#fff}
+.dark-panel .accordion-body p{color:#b8b8b4}
+
+@media(max-width:980px){
+  .service-tools{grid-template-columns:1fr}
+  .urgent-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .urgent-grid{grid-template-columns:1fr}
+  .urgent-card{min-height:auto}
+  .service-tools{gap:12px}
+  .quick-nav,.checklist{padding:22px}
+}
