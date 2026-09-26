@@ -741,21 +741,9 @@ footer{
   flex:0 0 auto;
   white-space:nowrap;
 }
-.logo img{
-  height:66px;
+ .logo img{
+  height:72px;
   width:auto;
-}
-.logo::after{
-  content:"Адвокат Стрелков";
-  display:block;
-  max-width:112px;
-  font-family:"Inter Tight","Manrope",Arial,sans-serif;
-  font-size:14px;
-  line-height:1.02;
-  font-weight:800;
-  letter-spacing:.035em;
-  text-transform:uppercase;
-  color:#111;
 }
 .menu{
   flex:1 1 auto;
@@ -776,9 +764,8 @@ footer{
   .container{width:min(96%,1320px)}
   .nav{gap:16px}
   .logo{gap:9px}
-  .logo img{height:60px}
-  .logo::after{font-size:12px;max-width:96px}
-  .menu{gap:13px;font-size:9.5px;letter-spacing:.035em}
+  .logo img{height:64px}
+    .menu{gap:13px;font-size:9.5px;letter-spacing:.035em}
   .phone{display:none}
 }
 
@@ -790,9 +777,8 @@ footer{
     font-size:8.8px;
   }
   .nav{min-height:82px;gap:12px}
-  .logo img{height:56px}
-  .logo::after{font-size:11px;max-width:88px}
-}
+  .logo img{height:60px}
+  }
 
 /* Компактные экраны: вместо сжатого меню оставляем бренд и телефон */
 @media(max-width:680px){
@@ -807,9 +793,5 @@ footer{
 @media(max-width:620px){
   .nav{min-height:76px}
   .logo{gap:8px}
-  .logo img{height:52px}
-  .logo::after{
-    font-size:10px;
-    max-width:78px;
-  }
+  .logo img{height:54px}
 }
