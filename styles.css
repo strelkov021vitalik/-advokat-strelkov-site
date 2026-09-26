@@ -669,3 +669,60 @@ footer{
   .service-tools{gap:12px}
   .quick-nav,.checklist{padding:22px}
 }
+
+
+/* Читаемая типографика: без слипания жирных букв */
+.hero h1{
+  letter-spacing:.012em;
+  line-height:1.01;
+}
+.section-head h2{
+  letter-spacing:.008em;
+  line-height:1.04;
+}
+.cta h2,
+.contact h2{
+  letter-spacing:.008em;
+  line-height:1.04;
+}
+.card h3,
+.article h2,
+.article h3,
+.ethics h3,
+.urgent-card h3,
+.quick-nav strong,
+.checklist strong{
+  letter-spacing:.004em;
+}
+.article h2{line-height:1.08}
+.article h3,.card h3,.urgent-card h3{line-height:1.18}
+
+@media(max-width:620px){
+  .nav{
+    min-height:70px;
+    gap:10px;
+  }
+  .logo{flex:0 0 auto}
+  .phone{
+    flex:0 0 auto;
+    margin-left:auto;
+    min-height:38px;
+    max-width:none;
+    padding:0 11px;
+    font-size:9px;
+    white-space:nowrap;
+    overflow:visible;
+    text-overflow:clip;
+  }
+  .hero h1{
+    font-size:44px;
+    line-height:1.04;
+    letter-spacing:.012em;
+  }
+  .section-head h2,
+  .cta h2,
+  .contact h2{
+    line-height:1.06;
+    letter-spacing:.008em;
+  }
+}
