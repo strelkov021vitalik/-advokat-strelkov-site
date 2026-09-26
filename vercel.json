@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {"source": "/:path*","has": [{"type": "host","value": "xn----7sbahcik1bdj2agwnnc.xn--p1ai"}],"destination": "https://advokat-strelkov.ru/:path*","permanent": true},
+    {"source": "/index.html","destination": "/","permanent": true},
+    {"source": "/ugolovnye-dela","destination": "/ugolovnyj-advokat-krasnodar","permanent": true},
+    {"source": "/grazhdanskie-dela","destination": "/grazhdanskij-advokat-krasnodar","permanent": true},
+    {"source": "/arbitrazhnye-spory","destination": "/arbitrazhnyj-advokat-krasnodar","permanent": true},
+    {"source": "/semejnye-spory","destination": "/grazhdanskij-advokat-krasnodar","permanent": true},
+    {"source": "/nasledstvennye-spory","destination": "/grazhdanskij-advokat-krasnodar","permanent": true},
+    {"source": "/nedvizhimost-zhilishchnye-spory","destination": "/grazhdanskij-advokat-krasnodar","permanent": true},
+    {"source": "/vzyskanie-dolgov","destination": "/grazhdanskij-advokat-krasnodar","permanent": true},
+    {"source": "/konsultaciya-advokata","destination": "/","permanent": true}
+  ],
+  "headers": [{"source": "/(.*)","headers": [{"key": "X-Robots-Tag","value": "index, follow"}]}]
+}
