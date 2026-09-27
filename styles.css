@@ -795,3 +795,77 @@ footer{
   .logo{gap:8px}
   .logo img{height:54px}
 }
+
+
+/* Горькие ошибки */
+.bitter-card{
+  background:#181818;
+  color:#fff;
+  padding-left:26px;
+}
+.bitter-card:hover{background:#222}
+.bitter-card .num{color:var(--accent)}
+.bitter-card h3{color:#fff}
+.bitter-card p{color:#bdbdb8}
+.bitter-card .more{color:#fff;border-color:#fff}
+.bitter-card:before{background:var(--accent)}
+
+.bitter-hero{
+  background:#181818;
+  color:#fff;
+  border-bottom:1px solid #333;
+}
+.bitter-hero .article{padding-top:28px;padding-bottom:20px}
+.bitter-hero .kicker{color:var(--accent)}
+.bitter-hero h1{
+  margin:16px 0 24px;
+  font-family:"Inter Tight","Manrope",Arial,sans-serif;
+  font-size:clamp(58px,8vw,118px);
+  line-height:.92;
+  font-weight:800;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+}
+.bitter-lead{
+  max-width:760px;
+  margin:0 0 34px;
+  color:#d6d6d2;
+  font-size:21px;
+  line-height:1.55;
+}
+.bitter-hero .callout{
+  background:#252525;
+  color:#dededa;
+  border-left-color:var(--accent);
+}
+.bitter-summary{
+  margin:72px 0 36px;
+  padding:36px;
+  background:#181818;
+  color:#fff;
+  border-left:7px solid var(--accent);
+}
+.bitter-summary span{
+  display:block;
+  margin-bottom:10px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.bitter-summary strong{
+  display:block;
+  font-family:"Inter Tight","Manrope",Arial,sans-serif;
+  font-size:clamp(32px,5vw,56px);
+  line-height:1;
+  text-transform:uppercase;
+}
+.bitter-summary p{color:#c3c3bf}
+
+@media(max-width:620px){
+  .bitter-card{padding-left:0}
+  .bitter-hero h1{font-size:52px}
+  .bitter-lead{font-size:18px}
+  .bitter-summary{padding:26px 22px}
+}
