@@ -1013,3 +1013,17 @@ footer{
     font-size:9.5px;
   }
 }
+
+
+/* 2026-09-28: performance tuning */
+main > section:not(.hero){
+  content-visibility:auto;
+  contain-intrinsic-size:800px;
+}
+@media(max-width:680px){
+  header{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:#fff;
+  }
+}
