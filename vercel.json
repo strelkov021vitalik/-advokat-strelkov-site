@@ -3,108 +3,26 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "xn----7sbahcik1bdj2agwnnc.xn--p1ai"
-        }
-      ],
-      "destination": "https://advokat-strelkov.ru/:path*",
-      "permanent": true
-    },
-    {
-      "source": "/index.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/ugolovnye-dela",
-      "destination": "/ugolovnyj-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/grazhdanskie-dela",
-      "destination": "/grazhdanskij-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/arbitrazhnye-spory",
-      "destination": "/arbitrazhnyj-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/semejnye-spory",
-      "destination": "/grazhdanskij-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/nasledstvennye-spory",
-      "destination": "/grazhdanskij-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/nedvizhimost-zhilishchnye-spory",
-      "destination": "/grazhdanskij-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/vzyskanie-dolgov",
-      "destination": "/grazhdanskij-advokat-krasnodar",
-      "permanent": true
-    },
-    {
-      "source": "/konsultaciya-advokata",
-      "destination": "/",
-      "permanent": true
-    }
+    {"source":"/:path*","has":[{"type":"host","value":"xn----7sbahcik1bdj2agwnnc.xn--p1ai"}],"destination":"https://advokat-strelkov.ru/:path*","permanent":true},
+    {"source":"/index.html","destination":"/","permanent":true},
+    {"source":"/ugolovnye-dela","destination":"/ugolovnyj-advokat-krasnodar","permanent":true},
+    {"source":"/grazhdanskie-dela","destination":"/grazhdanskij-advokat-krasnodar","permanent":true},
+    {"source":"/arbitrazhnye-spory","destination":"/arbitrazhnyj-advokat-krasnodar","permanent":true},
+    {"source":"/semejnye-spory","destination":"/grazhdanskij-advokat-krasnodar","permanent":true},
+    {"source":"/nasledstvennye-spory","destination":"/grazhdanskij-advokat-krasnodar","permanent":true},
+    {"source":"/nedvizhimost-zhilishchnye-spory","destination":"/grazhdanskij-advokat-krasnodar","permanent":true},
+    {"source":"/vzyskanie-dolgov","destination":"/grazhdanskij-advokat-krasnodar","permanent":true},
+    {"source":"/konsultaciya-advokata","destination":"/","permanent":true}
+  ],
+  "rewrites": [
+    {"source":"/favicon.ico","destination":"/logo-site.webp"}
   ],
   "headers": [
-    {
-      "source": "/robots.txt",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/styles.css",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=300, stale-while-revalidate=86400"
-        }
-      ]
-    },
-    {
-      "source": "/logo-site.webp",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=604800, immutable"
-        }
-      ]
-    },
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "index, follow"
-        }
-      ]
-    }
+    {"source":"/robots.txt","headers":[{"key":"Cache-Control","value":"public, max-age=3600, stale-while-revalidate=86400"}]},
+    {"source":"/sitemap.xml","headers":[{"key":"Cache-Control","value":"public, max-age=3600, stale-while-revalidate=86400"}]},
+    {"source":"/styles.css","headers":[{"key":"Cache-Control","value":"public, max-age=300, stale-while-revalidate=86400"}]},
+    {"source":"/logo-site.webp","headers":[{"key":"Cache-Control","value":"public, max-age=604800, immutable"}]},
+    {"source":"/favicon.ico","headers":[{"key":"Cache-Control","value":"public, max-age=604800, immutable"}]},
+    {"source":"/(.*)","headers":[{"key":"X-Robots-Tag","value":"index, follow"}]}
   ]
 }
