@@ -2,4 +2,4 @@
 
 Production website for https://advokat-strelkov.ru
 
-Deployment sync trigger: 2026-09-26
+Deployment sync trigger: 2026-10-01
