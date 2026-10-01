@@ -1823,13 +1823,13 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
 }
 
 
-/* Scroll reveal 2026-10-02 */
+/* Scroll reveal 2026-10-02 — restrained boutique motion */
 .motion-ready .reveal-up{
   opacity:0;
-  transform:translate3d(0,16px,0);
+  transform:translate3d(0,12px,0);
   transition:
-    opacity 560ms cubic-bezier(.2,.7,.2,1),
-    transform 560ms cubic-bezier(.2,.7,.2,1);
+    opacity 440ms cubic-bezier(.2,.7,.2,1),
+    transform 440ms cubic-bezier(.2,.7,.2,1);
   transition-delay:var(--reveal-delay,0ms);
   will-change:opacity,transform;
 }
@@ -1837,11 +1837,24 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
   opacity:1;
   transform:translate3d(0,0,0);
 }
+
+/* Density guardrails: one accent, more air, less simultaneous noise */
+.section-head p,.lead{max-width:720px}
+.article p,.article li{max-width:72ch}
+.grid .card p,.situation-card p,.plain-law-grid p,.practice-case p{max-width:34em}
+.article-meta{gap:7px}
+.filter-chips{row-gap:7px}
+main > section:not(.hero){overflow:clip}
+@media(max-width:800px){
+  .seal,.visual:after{display:none}
+  .visual:before{opacity:.82}
+}
 @media(max-width:680px){
   .motion-ready .reveal-up{
-    transform:translate3d(0,10px,0);
-    transition-duration:420ms;
+    transform:translate3d(0,8px,0);
+    transition-duration:360ms;
   }
+  .section-head p,.lead,.article p,.article li{max-width:none}
 }
 @media(prefers-reduced-motion:reduce){
   .motion-ready .reveal-up,
