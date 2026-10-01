@@ -13,11 +13,11 @@ if(!reduceMotion&&'IntersectionObserver'in window){
     'main > section:not(.hero) .checklist',
     'main > section:not(.hero) .brief-box',
     'main > section:not(.hero) .process-line',
+    'main > section:not(.hero) .practice-case',
     'main > section:not(.hero) .article > h2',
     'main > section:not(.hero) .article > h3',
-    'main > section:not(.hero) .article > p',
-    'main > section:not(.hero) .article > ul',
-    'main > section:not(.hero) .article > ol',
+    'main > section:not(.hero) .article > h2 + p',
+    'main > section:not(.hero) .article > h3 + p',
     'main > section:not(.hero) .article > .callout',
     'main > section:not(.hero) .article > .links'
   ].join(',');
@@ -28,7 +28,7 @@ if(!reduceMotion&&'IntersectionObserver'in window){
     if(parent){
       const siblings=[...parent.children].filter(x=>targets.includes(x));
       const pos=Math.max(0,siblings.indexOf(el));
-      el.style.setProperty('--reveal-delay',Math.min(pos*45,180)+'ms');
+      el.style.setProperty('--reveal-delay',Math.min(pos*32,96)+'ms');
     }
   });
   const observer=new IntersectionObserver(entries=>{
@@ -38,7 +38,7 @@ if(!reduceMotion&&'IntersectionObserver'in window){
         observer.unobserve(entry.target);
       }
     });
-  },{rootMargin:'0px 0px -8% 0px',threshold:0.08});
+  },{rootMargin:'0px 0px -6% 0px',threshold:0.06});
   targets.forEach(el=>observer.observe(el));
 }
 
