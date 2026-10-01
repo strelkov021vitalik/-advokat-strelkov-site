@@ -1094,3 +1094,336 @@ main > section:not(.hero){
     font-size:36px;
   }
 }
+
+
+/* Visual polish 2026-10-02 */
+:root{
+  --shadow-soft:0 14px 38px rgba(17,17,17,.07);
+  --radius-card:18px;
+}
+
+/* Более спокойная иерархия первого экрана */
+.topbar .container{min-height:30px}
+.nav{min-height:84px}
+.logo img{height:64px}
+.hero .container{
+  min-height:590px;
+  grid-template-columns:1.16fr .84fr;
+  gap:56px;
+  padding-top:46px;
+  padding-bottom:54px;
+}
+.hero h1{
+  max-width:900px;
+  margin:16px 0 22px;
+  font-size:clamp(48px,5.7vw,80px);
+  line-height:1.03;
+  letter-spacing:.008em;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.visual{min-height:370px}
+.visual:before{width:min(330px,74%)}
+.visual img{width:min(270px,64%)}
+.seal{
+  width:108px;
+  height:108px;
+  right:3%;
+  top:9%;
+  font-size:8px;
+}
+.visual:after{width:96px;height:13px;right:11%;bottom:19%}
+
+/* Единый ритм секций */
+section{padding:88px 0}
+.section-head{margin-bottom:42px}
+.section-head h2{
+  font-size:clamp(36px,4.7vw,64px);
+  line-height:1.04;
+}
+
+/* Карточки: визуально кликабельные, но без ярмарки теней */
+.grid{
+  gap:24px;
+  border-top:0;
+}
+.grid .card:nth-child(n){
+  min-height:250px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-card);
+  background:#fff;
+}
+.grid .card:before{display:none}
+.grid .card:hover{
+  background:#fff;
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-soft);
+  border-color:#cfcfca;
+}
+.grid .card h3{margin-top:18px}
+.grid .bitter-card{
+  background:#181818;
+  color:#fff;
+  border-color:#303030;
+}
+.grid .bitter-card:hover{background:#202020;border-color:#404040}
+.grid .bitter-card h3{color:#fff}
+.grid .bitter-card p{color:#bdbdb8}
+.accent-panel .grid .card{
+  background:rgba(255,255,255,.20);
+  border-color:rgba(17,17,17,.28);
+}
+.accent-panel .grid .card:hover{background:rgba(255,255,255,.32)}
+.dark-panel .grid .card{
+  background:#202020;
+  border-color:#383838;
+}
+.dark-panel .grid .card:hover{background:#252525;border-color:#4a4a4a}
+
+/* Срочные карточки */
+.urgent-grid{
+  gap:16px;
+  background:transparent;
+  border:0;
+}
+.urgent-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  min-height:180px;
+}
+.urgent-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-soft);
+}
+
+/* Длинные статьи: уже строка, больше воздуха */
+.article{max-width:760px}
+.article p,.article li{
+  font-size:16px;
+  line-height:1.8;
+}
+.article h2{
+  margin-top:58px;
+  font-size:clamp(32px,3.8vw,46px);
+  line-height:1.08;
+}
+.article h3{margin-top:36px}
+
+/* Оглавление длинной страницы */
+.toc{
+  position:sticky;
+  top:96px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow-x:auto;
+  margin:26px 0 38px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 22px rgba(17,17,17,.05);
+  backdrop-filter:blur(12px);
+  scrollbar-width:none;
+}
+.toc::-webkit-scrollbar{display:none}
+.toc strong{
+  flex:0 0 auto;
+  padding:0 9px;
+  font-size:10px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#777;
+}
+.toc a{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 11px;
+  border-radius:999px;
+  background:#f1f1ee;
+  color:#111;
+  font-size:11px;
+  font-weight:700;
+}
+.toc a:hover{background:var(--accent-soft);color:#111}
+
+/* Более аккуратные сервисные панели */
+.service-tools{gap:20px;margin-bottom:34px}
+.quick-nav,.checklist{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#f7f7f4;
+}
+.quick-nav a{transition:padding-left .18s ease,color .18s ease}
+.quick-nav a:hover{padding-left:5px}
+
+/* CTA и кнопки */
+.btn,.phone{box-shadow:none}
+.btn:hover,.phone:hover{box-shadow:0 8px 20px rgba(17,17,17,.10)}
+.cta{padding:72px 0}
+.cta h2{font-size:clamp(38px,4.6vw,60px)}
+
+/* Расширенный подвал */
+footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spacing:0}
+.footer-rich{
+  display:grid;
+  grid-template-columns:1.15fr 1fr 1fr;
+  gap:44px;
+  padding-top:48px;
+  padding-bottom:34px;
+}
+.footer-rich strong{
+  display:block;
+  color:#fff;
+  font-size:17px;
+  line-height:1.25;
+  margin-bottom:8px;
+}
+.footer-rich span,.footer-rich a{
+  display:block;
+  color:#a5a5a0;
+  font-size:12px;
+  line-height:1.65;
+}
+.footer-rich a:hover{color:var(--accent)}
+.footer-links{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:5px;
+}
+.footer-contact a{
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.footer-legal{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:18px;
+  padding-bottom:26px;
+  border-top:1px solid #262626;
+  color:#777;
+  font-size:10px;
+  line-height:1.5;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+/* Активный раздел в основном меню */
+.section-criminal .menu a[href="/ugolovnyj-advokat-krasnodar"]:after,
+.section-civil .menu a[href="/grazhdanskij-advokat-krasnodar"]:after,
+.section-arbitration .menu a[href="/arbitrazhnyj-advokat-krasnodar"]:after,
+.section-appeal .menu a[href="/apellyaciya-kassaciya"]:after{right:0}
+
+/* Мобильное меню без JavaScript */
+.mobile-nav{display:none}
+@media(max-width:680px){
+  .topbar .container{min-height:27px}
+  .nav{
+    min-height:72px;
+    flex-wrap:wrap;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+  .logo img{height:50px}
+  .menu{display:none}
+  .phone{display:inline-flex;font-size:9px}
+  .mobile-nav{
+    display:block;
+    flex:0 0 100%;
+    order:3;
+    border-top:1px solid var(--line);
+  }
+  .mobile-nav summary{
+    position:relative;
+    cursor:pointer;
+    list-style:none;
+    padding:11px 26px 5px 0;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+  }
+  .mobile-nav summary::-webkit-details-marker{display:none}
+  .mobile-nav summary:after{
+    content:"+";
+    position:absolute;
+    right:2px;
+    top:7px;
+    color:var(--accent);
+    font-size:20px;
+    font-weight:500;
+  }
+  .mobile-nav[open] summary:after{content:"−"}
+  .mobile-nav-panel{
+    display:grid;
+    gap:0;
+    padding:5px 0 8px;
+  }
+  .mobile-nav-panel a{
+    padding:9px 0;
+    border-top:1px solid #ecece7;
+    font-size:11px;
+    font-weight:700;
+  }
+  .hero .container{
+    min-height:auto;
+    padding-top:46px;
+    padding-bottom:48px;
+  }
+  .hero h1{
+    font-size:clamp(37px,11.5vw,46px);
+    line-height:1.04;
+    margin-top:12px;
+    margin-bottom:18px;
+  }
+  .lead{font-size:15.5px;line-height:1.65}
+  section{padding:58px 0}
+  .section-head{margin-bottom:32px}
+  .section-head h2{font-size:36px}
+  .grid{gap:14px}
+  .grid .card:nth-child(n){
+    min-height:auto;
+    padding:24px;
+    border-radius:14px;
+  }
+  .urgent-grid{gap:12px}
+  .article{max-width:100%}
+  .article p,.article li{font-size:15.5px;line-height:1.76}
+  .article h2{font-size:31px;margin-top:48px}
+  .toc{
+    top:76px;
+    margin:20px -2px 30px;
+    border-radius:12px;
+  }
+  .service-tools{gap:12px}
+  .quick-nav,.checklist{border-radius:14px}
+  .cta{padding:54px 0}
+  .cta h2{font-size:36px}
+  .footer-rich{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-top:38px;
+    padding-bottom:28px;
+  }
+  .footer-legal{
+    display:block;
+    padding-top:16px;
+    padding-bottom:22px;
+  }
+  .footer-legal span{display:block;margin:5px 0}
+}
+
+@media(min-width:681px) and (max-width:1180px){
+  .hero h1{font-size:clamp(46px,6vw,68px)}
+  .grid{gap:18px}
+  .grid .card:nth-child(n){padding:26px}
+}
