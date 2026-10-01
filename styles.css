@@ -1537,3 +1537,287 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
 .practice-case p{margin:0 0 22px;color:#73736f;font-size:13.5px;line-height:1.6}
 .practice-case b{font-size:11px;letter-spacing:.04em;text-transform:uppercase}
 @media(max-width:680px){.practice-featured{grid-template-columns:1fr}.practice-icon{width:46px;height:46px}.practice-icon svg{width:25px;height:25px}}
+
+
+/* Boutique legal final layer 2026-10-02 */
+:root{
+  --shadow-soft:none;
+  --radius-card:0;
+}
+
+/* Строже, ближе к редакционной сетке ведущих юрфирм */
+.btn,.phone{
+  border-radius:2px;
+}
+.btn:hover,.phone:hover{
+  box-shadow:none;
+  transform:none;
+}
+
+/* Карточки практик — без SaaS-скруглений и теней */
+.grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.grid .card:nth-child(n){
+  min-height:258px;
+  padding:34px 28px 36px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.grid .card:nth-child(3n+2),
+.grid .card:nth-child(3n){
+  padding-left:28px;
+}
+.grid .card:nth-child(3n){
+  border-right:0;
+}
+.grid .card:before{
+  display:block;
+}
+.grid .card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.grid .bitter-card,
+.grid .bitter-card:hover{
+  background:#171717;
+  border-color:#333;
+}
+.grid .card h3{
+  margin-top:24px;
+  font-size:26px;
+  letter-spacing:-.012em;
+}
+.grid .card p{
+  max-width:34em;
+}
+
+/* Навигатор жизненных ситуаций — функциональные иконки, без декоративного шума */
+.situation-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.situation-card{
+  min-height:224px;
+  padding:30px 30px 32px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.situation-card:nth-child(3n+2),
+.situation-card:nth-child(3n){
+  padding-left:30px;
+}
+.situation-card:nth-child(3n){
+  border-right:0;
+}
+.situation-card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.situation-mark{
+  display:block;
+  width:auto;
+  height:auto;
+  border-radius:0;
+  background:none;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.situation-card h3{
+  margin:58px 0 11px;
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.situation-card .direction-icon{
+  right:28px;
+  top:28px;
+  width:32px;
+  height:32px;
+  color:#777;
+  stroke-width:1.55;
+}
+
+/* Блок "Право без юридического тумана" — как журнальная полоса */
+.plain-law-grid{
+  border:0;
+  border-top:1px solid #3b3b3b;
+  gap:0;
+}
+.plain-law-grid a{
+  min-height:236px;
+  padding:34px 34px 34px 0;
+  border-right:1px solid #3b3b3b;
+  border-bottom:1px solid #3b3b3b;
+  background:#151515;
+}
+.plain-law-grid a:nth-child(2n){
+  padding-left:34px;
+  border-right:0;
+}
+.plain-law-grid a:hover{
+  background:#1b1b1b;
+}
+.plain-law-grid h3{
+  font-size:29px;
+  letter-spacing:-.015em;
+}
+
+/* Судебная практика — редакционная витрина */
+.practice-featured{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.practice-case{
+  padding:32px 30px 34px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.practice-case:nth-child(2n){
+  padding-left:30px;
+  border-right:0;
+}
+.practice-case:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.practice-case h3{
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.practice-case b{
+  border-bottom:1px solid #111;
+  padding-bottom:2px;
+}
+
+/* Сервисные элементы: меньше "приложения", больше редакционного интерфейса */
+.materials-toolbar,
+.quick-nav,
+.checklist,
+.brief-box,
+.memo-card{
+  border-radius:0;
+  box-shadow:none;
+}
+.materials-toolbar{
+  background:#f7f7f4;
+}
+.materials-search input{
+  border-radius:0;
+}
+.brief-box{
+  border:0;
+  border-left:3px solid var(--accent);
+  background:#f7f7f4;
+}
+.memo-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.memo-card{
+  padding:28px 24px 30px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:transparent;
+  transform:none;
+}
+.memo-card:nth-child(4n+2),
+.memo-card:nth-child(4n+3),
+.memo-card:nth-child(4n){
+  padding-left:24px;
+}
+.memo-card:nth-child(4n){
+  border-right:0;
+}
+.memo-card:hover{
+  background:#fafaf8;
+  box-shadow:none;
+  transform:none;
+}
+
+/* Оглавление остаётся функциональным, но визуально спокойнее */
+.toc{
+  border-radius:2px;
+  box-shadow:none;
+}
+.toc a{
+  border-radius:2px;
+}
+
+/* Ненужная декоративная иконография карточек практик скрыта на случай старой разметки */
+.card-icon,
+.practice-icon{
+  display:none!important;
+}
+
+@media(max-width:980px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    border-right:0;
+    padding-left:0;
+    padding-right:0;
+  }
+  .grid .card:nth-child(3n+2),
+  .grid .card:nth-child(3n),
+  .situation-card:nth-child(3n+2),
+  .situation-card:nth-child(3n){
+    padding-left:0;
+  }
+  .plain-law-grid a,
+  .plain-law-grid a:nth-child(2n),
+  .practice-case,
+  .practice-case:nth-child(2n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+  .memo-card,
+  .memo-card:nth-child(4n+2),
+  .memo-card:nth-child(4n+3),
+  .memo-card:nth-child(4n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+}
+
+@media(max-width:620px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    min-height:auto;
+    padding-top:26px;
+    padding-bottom:28px;
+    border-radius:0;
+  }
+  .situation-card h3{
+    margin-top:46px;
+  }
+  .practice-case{
+    padding-top:26px;
+    padding-bottom:28px;
+  }
+}
