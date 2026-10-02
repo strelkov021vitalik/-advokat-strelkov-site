@@ -1,0 +1,55 @@
+name: IndexNow submit
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  submit-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Submit sitemap URLs to IndexNow
+        env:
+          INDEXNOW_KEY: advokat-strelkov-indexnow-2026
+          SITE_HOST: advokat-strelkov.ru
+          KEY_LOCATION: https://advokat-strelkov.ru/advokat-strelkov-indexnow-2026.txt
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import urllib.request
+          import xml.etree.ElementTree as ET
+
+          root = ET.parse("sitemap.xml").getroot()
+          ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+          urls = [x.text.strip() for x in root.findall("sm:url/sm:loc", ns) if x.text]
+          payload = {
+              "host": os.environ["SITE_HOST"],
+              "key": os.environ["INDEXNOW_KEY"],
+              "keyLocation": os.environ["KEY_LOCATION"],
+              "urlList": urls[:10000],
+          }
+          data = json.dumps(payload).encode("utf-8")
+          req = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=data,
+              headers={"Content-Type": "application/json; charset=utf-8"},
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  print("IndexNow status:", response.status)
+                  print("Submitted URLs:", len(urls))
+          except urllib.error.HTTPError as exc:
+              print("IndexNow HTTP status:", exc.code)
+              body = exc.read().decode("utf-8", "replace")
+              if body:
+                  print(body)
+              if exc.code not in (200, 202):
+                  raise
+          PY
