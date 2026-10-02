@@ -4,7 +4,11 @@ const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion
 if(!reduceMotion&&'IntersectionObserver'in window){
   const selector=[
     'main > section:not(.hero) .section-head > *',
-    'main > section:not(.hero) .card',
+    'main > section:not(.hero) .card:not(.bitter-card)',
+    'main > section:not(.hero) .bitter-card > .num',
+    'main > section:not(.hero) .bitter-card > h3',
+    'main > section:not(.hero) .bitter-card > p',
+    'main > section:not(.hero) .bitter-card > .more',
     'main > section:not(.hero) .situation-card',
     'main > section:not(.hero) .plain-law-grid > a',
     'main > section:not(.hero) .memo-card',
