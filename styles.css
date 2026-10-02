@@ -1876,3 +1876,30 @@ main > section:not(.hero){overflow:clip}
 .grid .bitter-card .more{color:#fff!important}
 .grid .bitter-card p{color:#bdbdb8!important}
 .grid .bitter-card .num{color:var(--accent)!important}
+
+
+/* Mobile nav dedupe hotfix 2026-10-02 */
+@media(max-width:680px){
+  .mobile-nav{display:none!important}
+  .menu{
+    display:flex!important;
+    order:3;
+    flex:0 0 100%;
+    width:100%;
+    max-width:100%;
+    justify-content:flex-start;
+    align-items:center;
+    gap:15px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:10px 0 11px;
+    margin:0;
+    border-top:1px solid var(--line);
+    font-size:9.5px;
+    letter-spacing:.035em;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+}
