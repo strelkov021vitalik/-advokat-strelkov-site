@@ -1017,8 +1017,7 @@ footer{
 
 /* 2026-09-28: performance tuning */
 main > section:not(.hero){
-  content-visibility:auto;
-  contain-intrinsic-size:800px;
+  content-visibility:visible;
 }
 @media(max-width:680px){
   header{
@@ -1902,4 +1901,18 @@ main > section:not(.hero){overflow:clip}
     scrollbar-width:none;
   }
   .menu::-webkit-scrollbar{display:none}
+}
+
+/* 2026-10-03: remove stacked whitespace, preserve the editorial design. */
+main > section.hero{padding:0}
+.hero .container{min-height:0;padding-top:38px;padding-bottom:42px}
+main > section:not(.hero){padding-top:56px;padding-bottom:56px}
+.section-head{margin-bottom:28px}
+.section-head > h2:first-child,.article > h2:first-child{margin-top:0}
+.grid .card:nth-child(n){min-height:0}
+@media(max-width:680px){
+  .hero .container{padding-top:28px;padding-bottom:30px}
+  main > section:not(.hero){padding-top:36px;padding-bottom:36px}
+  .section-head{margin-bottom:22px}
+  .situation-card h3{margin-top:26px}
 }
