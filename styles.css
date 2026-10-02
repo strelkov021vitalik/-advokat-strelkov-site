@@ -1864,3 +1864,15 @@ main > section:not(.hero){overflow:clip}
     transition:none!important;
   }
 }
+
+
+/* Bitter card mobile contrast fix 2026-10-02 */
+.grid .bitter-card,
+.grid .bitter-card:hover{
+  background:#171717!important;
+  color:#fff!important;
+}
+.grid .bitter-card h3,
+.grid .bitter-card .more{color:#fff!important}
+.grid .bitter-card p{color:#bdbdb8!important}
+.grid .bitter-card .num{color:var(--accent)!important}
