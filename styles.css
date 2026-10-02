@@ -112,13 +112,13 @@ header{
 }
 .hero:after{display:none}
 .hero .container{
-  min-height:680px;
+  min-height:520px;
   display:grid;
   grid-template-columns:1.18fr .82fr;
   gap:82px;
   align-items:center;
-  padding-top:50px;
-  padding-bottom:62px;
+  padding-top:32px;
+  padding-bottom:44px;
 }
 .kicker{
   font-size:10px;
