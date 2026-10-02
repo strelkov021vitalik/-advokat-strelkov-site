@@ -1094,3 +1094,773 @@ main > section:not(.hero){
     font-size:36px;
   }
 }
+
+
+/* Visual polish 2026-10-02 */
+:root{
+  --shadow-soft:0 14px 38px rgba(17,17,17,.07);
+  --radius-card:18px;
+}
+
+/* Более спокойная иерархия первого экрана */
+.topbar .container{min-height:30px}
+.nav{min-height:84px}
+.logo img{height:64px}
+.hero .container{
+  min-height:590px;
+  grid-template-columns:1.16fr .84fr;
+  gap:56px;
+  padding-top:46px;
+  padding-bottom:54px;
+}
+.hero h1{
+  max-width:900px;
+  margin:16px 0 22px;
+  font-size:clamp(48px,5.7vw,80px);
+  line-height:1.03;
+  letter-spacing:.008em;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.visual{min-height:370px}
+.visual:before{width:min(330px,74%)}
+.visual img{width:min(270px,64%)}
+.seal{
+  width:108px;
+  height:108px;
+  right:3%;
+  top:9%;
+  font-size:8px;
+}
+.visual:after{width:96px;height:13px;right:11%;bottom:19%}
+
+/* Единый ритм секций */
+section{padding:88px 0}
+.section-head{margin-bottom:42px}
+.section-head h2{
+  font-size:clamp(36px,4.7vw,64px);
+  line-height:1.04;
+}
+
+/* Карточки: визуально кликабельные, но без ярмарки теней */
+.grid{
+  gap:24px;
+  border-top:0;
+}
+.grid .card:nth-child(n){
+  min-height:250px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-card);
+  background:#fff;
+}
+.grid .card:before{display:none}
+.grid .card:hover{
+  background:#fff;
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-soft);
+  border-color:#cfcfca;
+}
+.grid .card h3{margin-top:18px}
+.grid .bitter-card{
+  background:#181818;
+  color:#fff;
+  border-color:#303030;
+}
+.grid .bitter-card:hover{background:#202020;border-color:#404040}
+.grid .bitter-card h3{color:#fff}
+.grid .bitter-card p{color:#bdbdb8}
+.accent-panel .grid .card{
+  background:rgba(255,255,255,.20);
+  border-color:rgba(17,17,17,.28);
+}
+.accent-panel .grid .card:hover{background:rgba(255,255,255,.32)}
+.dark-panel .grid .card{
+  background:#202020;
+  border-color:#383838;
+}
+.dark-panel .grid .card:hover{background:#252525;border-color:#4a4a4a}
+
+/* Срочные карточки */
+.urgent-grid{
+  gap:16px;
+  background:transparent;
+  border:0;
+}
+.urgent-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  min-height:180px;
+}
+.urgent-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-soft);
+}
+
+/* Длинные статьи: уже строка, больше воздуха */
+.article{max-width:760px}
+.article p,.article li{
+  font-size:16px;
+  line-height:1.8;
+}
+.article h2{
+  margin-top:58px;
+  font-size:clamp(32px,3.8vw,46px);
+  line-height:1.08;
+}
+.article h3{margin-top:36px}
+
+/* Оглавление длинной страницы */
+.toc{
+  position:sticky;
+  top:96px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow-x:auto;
+  margin:26px 0 38px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 22px rgba(17,17,17,.05);
+  backdrop-filter:blur(12px);
+  scrollbar-width:none;
+}
+.toc::-webkit-scrollbar{display:none}
+.toc strong{
+  flex:0 0 auto;
+  padding:0 9px;
+  font-size:10px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#777;
+}
+.toc a{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 11px;
+  border-radius:999px;
+  background:#f1f1ee;
+  color:#111;
+  font-size:11px;
+  font-weight:700;
+}
+.toc a:hover{background:var(--accent-soft);color:#111}
+
+/* Более аккуратные сервисные панели */
+.service-tools{gap:20px;margin-bottom:34px}
+.quick-nav,.checklist{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#f7f7f4;
+}
+.quick-nav a{transition:padding-left .18s ease,color .18s ease}
+.quick-nav a:hover{padding-left:5px}
+
+/* CTA и кнопки */
+.btn,.phone{box-shadow:none}
+.btn:hover,.phone:hover{box-shadow:0 8px 20px rgba(17,17,17,.10)}
+.cta{padding:72px 0}
+.cta h2{font-size:clamp(38px,4.6vw,60px)}
+
+/* Расширенный подвал */
+footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spacing:0}
+.footer-rich{
+  display:grid;
+  grid-template-columns:1.15fr 1fr 1fr;
+  gap:44px;
+  padding-top:48px;
+  padding-bottom:34px;
+}
+.footer-rich strong{
+  display:block;
+  color:#fff;
+  font-size:17px;
+  line-height:1.25;
+  margin-bottom:8px;
+}
+.footer-rich span,.footer-rich a{
+  display:block;
+  color:#a5a5a0;
+  font-size:12px;
+  line-height:1.65;
+}
+.footer-rich a:hover{color:var(--accent)}
+.footer-links{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:5px;
+}
+.footer-contact a{
+  color:#fff;
+  font-size:15px;
+  font-weight:700;
+  margin-bottom:6px;
+}
+.footer-legal{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:18px;
+  padding-bottom:26px;
+  border-top:1px solid #262626;
+  color:#777;
+  font-size:10px;
+  line-height:1.5;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+/* Активный раздел в основном меню */
+.section-criminal .menu a[href="/ugolovnyj-advokat-krasnodar"]:after,
+.section-civil .menu a[href="/grazhdanskij-advokat-krasnodar"]:after,
+.section-arbitration .menu a[href="/arbitrazhnyj-advokat-krasnodar"]:after,
+.section-appeal .menu a[href="/apellyaciya-kassaciya"]:after{right:0}
+
+/* Мобильное меню без JavaScript */
+.mobile-nav{display:none}
+@media(max-width:680px){
+  .topbar .container{min-height:27px}
+  .nav{
+    min-height:72px;
+    flex-wrap:wrap;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+  .logo img{height:50px}
+  .menu{display:none}
+  .phone{display:inline-flex;font-size:9px}
+  .mobile-nav{
+    display:block;
+    flex:0 0 100%;
+    order:3;
+    border-top:1px solid var(--line);
+  }
+  .mobile-nav summary{
+    position:relative;
+    cursor:pointer;
+    list-style:none;
+    padding:11px 26px 5px 0;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+  }
+  .mobile-nav summary::-webkit-details-marker{display:none}
+  .mobile-nav summary:after{
+    content:"+";
+    position:absolute;
+    right:2px;
+    top:7px;
+    color:var(--accent);
+    font-size:20px;
+    font-weight:500;
+  }
+  .mobile-nav[open] summary:after{content:"−"}
+  .mobile-nav-panel{
+    display:grid;
+    gap:0;
+    padding:5px 0 8px;
+  }
+  .mobile-nav-panel a{
+    padding:9px 0;
+    border-top:1px solid #ecece7;
+    font-size:11px;
+    font-weight:700;
+  }
+  .hero .container{
+    min-height:auto;
+    padding-top:46px;
+    padding-bottom:48px;
+  }
+  .hero h1{
+    font-size:clamp(37px,11.5vw,46px);
+    line-height:1.04;
+    margin-top:12px;
+    margin-bottom:18px;
+  }
+  .lead{font-size:15.5px;line-height:1.65}
+  section{padding:58px 0}
+  .section-head{margin-bottom:32px}
+  .section-head h2{font-size:36px}
+  .grid{gap:14px}
+  .grid .card:nth-child(n){
+    min-height:auto;
+    padding:24px;
+    border-radius:14px;
+  }
+  .urgent-grid{gap:12px}
+  .article{max-width:100%}
+  .article p,.article li{font-size:15.5px;line-height:1.76}
+  .article h2{font-size:31px;margin-top:48px}
+  .toc{
+    top:76px;
+    margin:20px -2px 30px;
+    border-radius:12px;
+  }
+  .service-tools{gap:12px}
+  .quick-nav,.checklist{border-radius:14px}
+  .cta{padding:54px 0}
+  .cta h2{font-size:36px}
+  .footer-rich{
+    grid-template-columns:1fr;
+    gap:24px;
+    padding-top:38px;
+    padding-bottom:28px;
+  }
+  .footer-legal{
+    display:block;
+    padding-top:16px;
+    padding-bottom:22px;
+  }
+  .footer-legal span{display:block;margin:5px 0}
+}
+
+@media(min-width:681px) and (max-width:1180px){
+  .hero h1{font-size:clamp(46px,6vw,68px)}
+  .grid{gap:18px}
+  .grid .card:nth-child(n){padding:26px}
+}
+
+
+/* Knowledge portal layer 2026-10-02 */
+.situation-section{background:#fff}
+.situation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.situation-card{position:relative;display:block;min-height:220px;padding:28px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:.2s ease}
+.situation-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);border-color:#c8c8c2}
+.situation-mark{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);font-size:11px;font-weight:900}
+.situation-card h3{margin:42px 0 10px;font-size:25px;line-height:1.14}
+.situation-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.plain-law{background:#151515;color:#fff}
+.plain-law .section-head .kicker{color:var(--accent)}
+.plain-law .section-head p{color:#b7b7b2}
+.plain-law-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#353535;border:1px solid #353535}
+.plain-law-grid a{display:block;min-height:220px;padding:30px;background:#1c1c1c;transition:.18s ease}
+.plain-law-grid a:hover{background:#242424}
+.plain-law-grid span{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.plain-law-grid h3{margin:24px 0 10px;font-size:26px;line-height:1.14;color:#fff}
+.plain-law-grid p{margin:0;color:#b7b7b2;font-size:14px;line-height:1.6}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.article-meta span{display:inline-flex;align-items:center;min-height:32px;padding:0 11px;border-radius:999px;background:#f1f1ee;color:#4d4d49;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.article-meta .fresh{background:var(--accent-soft);color:#753500}
+.brief-box{margin:0 0 30px;padding:24px 26px;border:1px solid var(--line);border-radius:16px;background:#f8f8f5}
+.brief-box strong{display:block;margin-bottom:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#777}
+.brief-box p{margin:0!important;color:#242422!important;font-size:15px!important;line-height:1.65!important}
+
+.process-line{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:34px 0 44px;border-top:2px solid #111}
+.process-step{position:relative;padding:24px 18px 0 0}
+.process-step:before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #fff}
+.process-step b{display:block;margin-bottom:7px;font-size:13px}
+.process-step span{display:block;color:#777;font-size:12px;line-height:1.45}
+
+.materials-toolbar{margin:0 0 34px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#f7f7f4}
+.materials-search{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.materials-search label{font-size:11px;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.materials-search input{width:100%;min-height:44px;padding:0 14px;border:1px solid #d4d4cf;border-radius:10px;background:#fff;font:inherit;font-size:14px}
+.filter-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.filter-chips button{min-height:34px;padding:0 12px;border:1px solid #d6d6d1;border-radius:999px;background:#fff;color:#333;cursor:pointer;font:inherit;font-size:10px;font-weight:800;letter-spacing:.035em;text-transform:uppercase}
+.filter-chips button:hover,.filter-chips button.is-active{background:var(--accent);border-color:var(--accent);color:#111}
+#materials-grid .card[hidden]{display:none}
+
+.memo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:42px}
+.memo-card{display:block;padding:24px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.18s ease}
+.memo-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft)}
+.memo-card span{color:var(--accent);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.memo-card h3{margin:20px 0 9px;font-size:21px;line-height:1.15}
+.memo-card p{margin:0;color:#777;font-size:13px;line-height:1.55}
+
+.reading-progress{position:fixed;z-index:10000;left:0;top:0;width:100%;height:3px;background:transparent;pointer-events:none}
+.reading-progress span{display:block;width:0;height:100%;background:var(--accent);transition:width .08s linear}
+.print-actions{display:flex;gap:10px;margin:28px 0}
+.memo-page .checklist-print{margin:24px 0;padding:0;list-style:none;counter-reset:memo}
+.memo-page .checklist-print li{position:relative;margin:0;padding:18px 0 18px 52px;border-bottom:1px solid var(--line);counter-increment:memo}
+.memo-page .checklist-print li:before{content:counter(memo,decimal-leading-zero);position:absolute;left:0;top:18px;color:var(--accent);font-size:11px;font-weight:900;letter-spacing:.06em}
+.memo-note{margin:28px 0;padding:22px;border-left:4px solid var(--accent);background:var(--accent-soft)}
+
+@media(max-width:980px){
+  .situation-grid{grid-template-columns:1fr 1fr}
+  .memo-grid{grid-template-columns:1fr 1fr}
+  .process-line{grid-template-columns:1fr;border-top:0;border-left:2px solid #111;margin-left:7px}
+  .process-step{padding:0 0 24px 26px}
+  .process-step:before{top:2px;left:-7px}
+}
+@media(max-width:620px){
+  .situation-grid,.plain-law-grid,.memo-grid{grid-template-columns:1fr}
+  .situation-card{min-height:auto;padding:22px}
+  .situation-card h3{margin-top:28px}
+  .plain-law-grid a{min-height:auto;padding:24px}
+  .materials-search{grid-template-columns:1fr;gap:8px}
+  .materials-toolbar{padding:16px}
+}
+@media print{
+  header,.topbar,.cta,.contact,footer,.law-chat,.mobile-nav,.print-actions,.reading-progress{display:none!important}
+  body{background:#fff;color:#000}
+  .memo-page{max-width:none!important}
+  .memo-page h1,.memo-page h2,.memo-page h3{color:#000}
+  .memo-page p,.memo-page li{color:#111!important}
+  section{padding:18px 0!important}
+}
+
+
+/* Legal iconography and practice cards */
+.direction-icon{width:38px;height:38px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:#111;display:block}
+.situation-card .direction-icon{position:absolute;right:24px;top:24px;color:#8b8b85;opacity:.9}
+.card-icon{margin-bottom:14px;color:#6e6e68}
+.bitter-card .card-icon{color:var(--accent)}
+.practice-card{position:relative;overflow:hidden;background:#fbfbf8!important;border-color:#cacac4!important}
+.practice-card:after{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--accent)}
+.practice-card .num{color:#7a3b00!important}
+.practice-card p:before{content:"Ключевой вывод";display:block;margin-bottom:7px;color:#8b8b85;font-size:9px;font-weight:900;letter-spacing:.075em;text-transform:uppercase}
+.practice-card:hover{background:#fffdf8!important}
+@media(max-width:620px){.situation-card .direction-icon{right:18px;top:18px;width:34px;height:34px}.card-icon{width:34px;height:34px}}
+
+
+/* Signature icons and practice cards */
+.practice-icon{display:grid;place-items:center;width:52px;height:52px;margin-bottom:22px;border:1px solid #deded8;border-radius:14px;background:#fafaf7}
+.practice-icon svg{width:28px;height:28px;fill:none;stroke:var(--accent);stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.dark-panel .practice-icon,.bitter-card .practice-icon{background:#222;border-color:#3a3a3a}
+.practice-featured-head{margin-top:46px}
+.practice-featured{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 44px}
+.practice-case{display:block;padding:26px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.18s ease}
+.practice-case:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft);border-color:#c9c9c3}
+.practice-case-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.practice-case-meta span{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.practice-case-meta time{color:#777;font-size:11px;font-weight:700}
+.practice-case h3{margin:0 0 10px;font-size:24px;line-height:1.14}
+.practice-case p{margin:0 0 22px;color:#73736f;font-size:13.5px;line-height:1.6}
+.practice-case b{font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:680px){.practice-featured{grid-template-columns:1fr}.practice-icon{width:46px;height:46px}.practice-icon svg{width:25px;height:25px}}
+
+
+/* Boutique legal final layer 2026-10-02 */
+:root{
+  --shadow-soft:none;
+  --radius-card:0;
+}
+
+/* Строже, ближе к редакционной сетке ведущих юрфирм */
+.btn,.phone{
+  border-radius:2px;
+}
+.btn:hover,.phone:hover{
+  box-shadow:none;
+  transform:none;
+}
+
+/* Карточки практик — без SaaS-скруглений и теней */
+.grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.grid .card:nth-child(n){
+  min-height:258px;
+  padding:34px 28px 36px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.grid .card:nth-child(3n+2),
+.grid .card:nth-child(3n){
+  padding-left:28px;
+}
+.grid .card:nth-child(3n){
+  border-right:0;
+}
+.grid .card:before{
+  display:block;
+}
+.grid .card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.grid .bitter-card,
+.grid .bitter-card:hover{
+  background:#171717;
+  border-color:#333;
+}
+.grid .card h3{
+  margin-top:24px;
+  font-size:26px;
+  letter-spacing:-.012em;
+}
+.grid .card p{
+  max-width:34em;
+}
+
+/* Навигатор жизненных ситуаций — функциональные иконки, без декоративного шума */
+.situation-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.situation-card{
+  min-height:224px;
+  padding:30px 30px 32px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.situation-card:nth-child(3n+2),
+.situation-card:nth-child(3n){
+  padding-left:30px;
+}
+.situation-card:nth-child(3n){
+  border-right:0;
+}
+.situation-card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.situation-mark{
+  display:block;
+  width:auto;
+  height:auto;
+  border-radius:0;
+  background:none;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.situation-card h3{
+  margin:58px 0 11px;
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.situation-card .direction-icon{
+  right:28px;
+  top:28px;
+  width:32px;
+  height:32px;
+  color:#777;
+  stroke-width:1.55;
+}
+
+/* Блок "Право без юридического тумана" — как журнальная полоса */
+.plain-law-grid{
+  border:0;
+  border-top:1px solid #3b3b3b;
+  gap:0;
+}
+.plain-law-grid a{
+  min-height:236px;
+  padding:34px 34px 34px 0;
+  border-right:1px solid #3b3b3b;
+  border-bottom:1px solid #3b3b3b;
+  background:#151515;
+}
+.plain-law-grid a:nth-child(2n){
+  padding-left:34px;
+  border-right:0;
+}
+.plain-law-grid a:hover{
+  background:#1b1b1b;
+}
+.plain-law-grid h3{
+  font-size:29px;
+  letter-spacing:-.015em;
+}
+
+/* Судебная практика — редакционная витрина */
+.practice-featured{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.practice-case{
+  padding:32px 30px 34px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.practice-case:nth-child(2n){
+  padding-left:30px;
+  border-right:0;
+}
+.practice-case:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.practice-case h3{
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.practice-case b{
+  border-bottom:1px solid #111;
+  padding-bottom:2px;
+}
+
+/* Сервисные элементы: меньше "приложения", больше редакционного интерфейса */
+.materials-toolbar,
+.quick-nav,
+.checklist,
+.brief-box,
+.memo-card{
+  border-radius:0;
+  box-shadow:none;
+}
+.materials-toolbar{
+  background:#f7f7f4;
+}
+.materials-search input{
+  border-radius:0;
+}
+.brief-box{
+  border:0;
+  border-left:3px solid var(--accent);
+  background:#f7f7f4;
+}
+.memo-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.memo-card{
+  padding:28px 24px 30px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:transparent;
+  transform:none;
+}
+.memo-card:nth-child(4n+2),
+.memo-card:nth-child(4n+3),
+.memo-card:nth-child(4n){
+  padding-left:24px;
+}
+.memo-card:nth-child(4n){
+  border-right:0;
+}
+.memo-card:hover{
+  background:#fafaf8;
+  box-shadow:none;
+  transform:none;
+}
+
+/* Оглавление остаётся функциональным, но визуально спокойнее */
+.toc{
+  border-radius:2px;
+  box-shadow:none;
+}
+.toc a{
+  border-radius:2px;
+}
+
+/* Ненужная декоративная иконография карточек практик скрыта на случай старой разметки */
+.card-icon,
+.practice-icon{
+  display:none!important;
+}
+
+@media(max-width:980px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    border-right:0;
+    padding-left:0;
+    padding-right:0;
+  }
+  .grid .card:nth-child(3n+2),
+  .grid .card:nth-child(3n),
+  .situation-card:nth-child(3n+2),
+  .situation-card:nth-child(3n){
+    padding-left:0;
+  }
+  .plain-law-grid a,
+  .plain-law-grid a:nth-child(2n),
+  .practice-case,
+  .practice-case:nth-child(2n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+  .memo-card,
+  .memo-card:nth-child(4n+2),
+  .memo-card:nth-child(4n+3),
+  .memo-card:nth-child(4n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+}
+
+@media(max-width:620px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    min-height:auto;
+    padding-top:26px;
+    padding-bottom:28px;
+    border-radius:0;
+  }
+  .situation-card h3{
+    margin-top:46px;
+  }
+  .practice-case{
+    padding-top:26px;
+    padding-bottom:28px;
+  }
+}
+
+
+/* Scroll reveal 2026-10-02 — restrained boutique motion */
+.motion-ready .reveal-up{
+  opacity:0;
+  transform:translate3d(0,12px,0);
+  transition:
+    opacity 440ms cubic-bezier(.2,.7,.2,1),
+    transform 440ms cubic-bezier(.2,.7,.2,1);
+  transition-delay:var(--reveal-delay,0ms);
+  will-change:opacity,transform;
+}
+.motion-ready .reveal-up.is-visible{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+/* Density guardrails: one accent, more air, less simultaneous noise */
+.section-head p,.lead{max-width:720px}
+.article p,.article li{max-width:72ch}
+.grid .card p,.situation-card p,.plain-law-grid p,.practice-case p{max-width:34em}
+.article-meta{gap:7px}
+.filter-chips{row-gap:7px}
+main > section:not(.hero){overflow:clip}
+@media(max-width:800px){
+  .seal,.visual:after{display:none}
+  .visual:before{opacity:.82}
+}
+@media(max-width:680px){
+  .motion-ready .reveal-up{
+    transform:translate3d(0,8px,0);
+    transition-duration:360ms;
+  }
+  .section-head p,.lead,.article p,.article li{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-ready .reveal-up,
+  .motion-ready .reveal-up.is-visible{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+  }
+}

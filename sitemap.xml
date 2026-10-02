@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://advokat-strelkov.ru/</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
+<url><loc>https://advokat-strelkov.ru/</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>1.0</priority></url>
 <url><loc>https://advokat-strelkov.ru/uslugi</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/ugolovnyj-advokat-krasnodar</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/grazhdanskij-advokat-krasnodar</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/arbitrazhnyj-advokat-krasnodar</loc><lastmod>2026-09-27</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/apellyaciya-kassaciya</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/chetvertyj-kassacionnyj-sud</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
-<url><loc>https://advokat-strelkov.ru/publikacii</loc><lastmod>2026-10-01</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+<url><loc>https://advokat-strelkov.ru/publikacii</loc><lastmod>2026-10-02</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
 <url><loc>https://advokat-strelkov.ru/srok-kassacionnoj-zhaloby-grazhdanskoe-delo</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://advokat-strelkov.ru/kassaciya-arbitrazhnyj-process</loc><lastmod>2026-09-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 <url><loc>https://advokat-strelkov.ru/obzhalovanie-prigovora</loc><lastmod>2026-09-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -57,4 +57,9 @@
 <url><loc>https://advokat-strelkov.ru/poryadok-obshcheniya-s-rebenkom-krasnodar</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/razdel-imushchestva-suprugov-krasnodar</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 <url><loc>https://advokat-strelkov.ru/neustoyka-ddu-zastrojshchik-krasnodar</loc><lastmod>2026-10-01</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+<url><loc>https://advokat-strelkov.ru/pamyatka-zaderzhanie</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://advokat-strelkov.ru/pamyatka-obysk</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://advokat-strelkov.ru/pamyatka-dtp</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://advokat-strelkov.ru/pamyatka-ddu</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+<url><loc>https://advokat-strelkov.ru/kadrovye-izmeneniya-sudy-krasnodarskogo-kraya-2026</loc><lastmod>2026-10-02</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
