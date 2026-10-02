@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-10-03",
+  "courts": [
+    {
+      "key": "prikubansky",
+      "base": "https://krasnodar-prikubansky.krd.sudrf.ru",
+      "judges_count": 18
+    },
+    {
+      "key": "leninsky",
+      "base": "https://krasnodar-leninsky.krd.sudrf.ru",
+      "judges_count": 0
+    },
+    {
+      "key": "pervomaisky",
+      "base": "https://pervomaisky.krd.sudrf.ru",
+      "judges_count": 0
+    },
+    {
+      "key": "sovetsky",
+      "base": "https://krasnodar-sovetsky.krd.sudrf.ru",
+      "judges_count": 21
+    },
+    {
+      "key": "oktyabrsky",
+      "base": "https://krasnodar-oktybrsky.krd.sudrf.ru",
+      "judges_count": 0
+    },
+    {
+      "key": "kraevoi",
+      "base": "https://kraevoi.krd.sudrf.ru",
+      "judges_count": 125
+    }
+  ],
+  "notes": [
+    "Некоторые официальные сайты не предоставляют доступный полный состав судей.",
+    "КПП в старой странице Прикубанского суда отличается от действующего сервиса govduty; в справочнике использован govduty."
+  ],
+  "agency_sources": {
+    "prosecutors": "https://epp.genproc.gov.ru/ru/proc_23/about-the-proc/structure/structure-on-map/sid-4089/",
+    "police": "https://do.krd.ru/node/380",
+    "sk_regional_contact_block": "https://kuban.sledcom.ru/news/item/1826637/"
+  },
+  "unverified": [
+    "Direct territorial SK contacts: official directory returns 403",
+    "Regional MVD address and telephone: official site returns 502",
+    "Full membership of Leninsky, Pervomaisky, Oktyabrsky courts: no accessible official list"
+  ]
+}

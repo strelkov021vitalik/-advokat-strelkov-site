@@ -1916,3 +1916,42 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
   .section-head{margin-bottom:22px}
   .situation-card h3{margin-top:26px}
 }
+
+/* Existing reference section: sibling topics inside each court. */
+.reference-intro h1{font-size:clamp(30px,4vw,52px);line-height:1.12;max-width:960px;margin:14px 0 20px}
+.reference-intro p{max-width:760px}
+.reference-nav,.court-picker{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.reference-nav a,.court-picker a{display:block;padding:12px 15px;border:1px solid var(--line);font-size:14px;line-height:1.4}
+.reference-nav a:hover,.court-picker a:hover{border-color:var(--accent)}
+.reference-nav a[aria-current=page]{border-bottom:3px solid var(--accent)}
+.reference-content{max-width:1120px}
+.court-entry{margin:0 0 42px;scroll-margin-top:150px}
+.court-entry h2{font-size:clamp(25px,3vw,36px);line-height:1.18;margin:0 0 12px}
+.reference-address{color:var(--muted);margin:0 0 20px}
+.reference-topic{border-top:1px solid var(--line)}
+.reference-topic:last-of-type{border-bottom:1px solid var(--line)}
+.reference-topic summary{cursor:pointer;padding:17px 4px;font-size:17px;font-weight:700;line-height:1.4}
+.reference-topic summary:hover{color:#a94300}
+.reference-body{padding:0 4px 22px;line-height:1.65}
+.reference-body p{margin:12px 0;max-width:82ch}
+.reference-body a{text-decoration:underline;text-underline-offset:3px}
+.reference-body ul{padding-left:22px}
+.reference-body li{margin:8px 0}
+.reference-table-wrap{width:100%;overflow-x:auto;margin:18px 0}
+.reference-table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}
+.reference-table th,.reference-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.reference-table th{background:#f6f6f3;font-weight:700}
+.reference-table td:first-child{min-width:140px}
+.fee-form{display:flex;align-items:end;flex-wrap:wrap;gap:14px;padding:20px 0}
+.fee-form label{display:grid;gap:8px;font-weight:700;flex:1;min-width:180px}
+.fee-form input{width:100%;padding:13px;font:inherit;border:1px solid #999;background:#fff;color:#111}
+.fee-form output{flex-basis:100%;font-size:19px;font-weight:700;padding:10px 0}
+.reference-page .reference-topic :focus-visible,.reference-page a:focus-visible{outline:2px solid #aa4400;outline-offset:4px}
+@media(max-width:680px){.reference-nav a,.court-picker a{font-size:13px;padding:10px 12px}.reference-table th,.reference-table td{padding:9px 6px}.reference-table{font-size:13px}.court-entry{scroll-margin-top:165px;margin-bottom:32px}.fee-form .btn{width:100%}}
+@media print{.reference-topic>div{display:block!important}.reference-nav,.court-picker,.fee-form button{display:none}}
+.agency-grid .card h2{font-size:24px;line-height:1.2;margin:0 0 18px;text-transform:none}
+.agency-grid .card p{overflow-wrap:anywhere}
+.agency-grid .card a{text-decoration:underline;text-underline-offset:3px}
+.judge-list{columns:2;column-gap:30px}
+.judge-list li{break-inside:avoid}
+@media(max-width:680px){.judge-list{columns:1}}
