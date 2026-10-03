@@ -9,12 +9,16 @@
     {
       "key": "leninsky",
       "base": "https://krasnodar-leninsky.krd.sudrf.ru",
-      "judges_count": 0
+      "judges_count": 19,
+      "judges_source": "https://krasnodar-leninsky.krd.sudrf.ru/modules.php?name=info_court&rid=2",
+      "source_updated": "27.08.2026"
     },
     {
       "key": "pervomaisky",
       "base": "https://pervomaisky.krd.sudrf.ru",
-      "judges_count": 0
+      "judges_count": 19,
+      "judges_source": "https://pervomaisky.krd.sudrf.ru/modules.php?name=info_court&id=2",
+      "source_updated": "01.10.2026"
     },
     {
       "key": "sovetsky",
@@ -44,6 +48,6 @@
   "unverified": [
     "Direct territorial SK contacts: official directory returns 403",
     "Regional MVD address and telephone: official site returns 502",
-    "Full membership of Leninsky, Pervomaisky, Oktyabrsky courts: no accessible official list"
+    "Full membership of Oktyabrsky court: no accessible official list"
   ]
 }

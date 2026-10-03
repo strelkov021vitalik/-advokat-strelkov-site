@@ -26,9 +26,52 @@
       output.textContent = fee(amount).toLocaleString('ru-RU') + ' ₽ — без льгот и специальных правил';
     });
   });
-  // Anchor navigation opens the selected court without creating duplicate pages.
+  // Enhance existing court links into tabs; without JS every court stays readable.
+  const picker = document.querySelector('.court-picker');
+  const tabs = picker ? [...picker.querySelectorAll('a[href^="#"]')] : [];
+  const courts = tabs.map(tab => document.getElementById(tab.hash.slice(1)));
+  const tabMode = tabs.length > 0 && courts.every(Boolean);
+  const selectCourt = (index) => {
+    tabs.forEach((tab, i) => {
+      tab.setAttribute('aria-selected', String(i === index));
+      tab.tabIndex = i === index ? 0 : -1;
+      courts[i].hidden = i !== index;
+    });
+  };
+  if (tabMode) {
+    picker.setAttribute('role', 'tablist');
+    tabs.forEach((tab, i) => {
+      tab.id = 'court-tab-' + courts[i].id;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', courts[i].id);
+      courts[i].setAttribute('role', 'tabpanel');
+      courts[i].setAttribute('aria-labelledby', tab.id);
+      courts[i].tabIndex = 0;
+      tab.addEventListener('click', () => selectCourt(i));
+      tab.addEventListener('keydown', event => {
+        let next;
+        if (event.key === 'ArrowRight') next = (i + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (i + tabs.length - 1) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next === undefined) return;
+        event.preventDefault();
+        tabs[next].focus();
+        tabs[next].click();
+      });
+    });
+    selectCourt(0);
+  }
+  // Preserve direct links and browser back/forward navigation.
   const revealAnchor = () => {
     let target; try {target=document.getElementById(decodeURIComponent(location.hash.slice(1)));} catch {return;}
+    if (tabMode) {
+      const court = target && target.closest('.court-entry');
+      const index = courts.indexOf(court);
+      if (index >= 0) selectCourt(index);
+      else if (target && target.id === 'higher') selectCourt(courts.length - 1);
+      else if (!location.hash || (target && target.id === 'district')) selectCourt(0);
+    }
     if (!target) return;
     for(let p=target; p; p=p.parentElement) if(p.tagName==='DETAILS') p.open=true;
   };
