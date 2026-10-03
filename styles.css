@@ -2048,3 +2048,39 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
   }
   .home-meta{font-size:12px;line-height:1.55}
 }
+
+
+/* Homepage dedupe pass 2026-10-03 */
+.home-page .home-practice-grid,
+.home-page .home-current-grid{
+  grid-template-columns:repeat(2,1fr);
+}
+.home-page .home-practice-grid .card:nth-child(n),
+.home-page .home-current-grid .card:nth-child(n){
+  padding-left:28px;
+  padding-right:28px;
+  border-right:1px solid var(--line);
+}
+.home-page .home-practice-grid .card:nth-child(odd),
+.home-page .home-current-grid .card:nth-child(odd){
+  padding-left:0;
+}
+.home-page .home-practice-grid .card:nth-child(even),
+.home-page .home-current-grid .card:nth-child(even){
+  border-right:0;
+}
+.home-page .accent-panel .home-current-grid .card{
+  border-color:rgba(17,17,17,.28);
+}
+@media(max-width:680px){
+  .home-page .home-practice-grid,
+  .home-page .home-current-grid{
+    grid-template-columns:1fr;
+  }
+  .home-page .home-practice-grid .card:nth-child(n),
+  .home-page .home-current-grid .card:nth-child(n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+}
