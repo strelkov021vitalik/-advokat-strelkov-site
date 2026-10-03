@@ -1960,3 +1960,91 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 .judge-list{columns:2;column-gap:30px}
 .judge-list li{break-inside:avoid}
 @media(max-width:680px){.judge-list{columns:1}}
+
+
+/* Homepage hierarchy refinement 2026-10-03 */
+.home-page .home-intro{
+  padding:64px 0 72px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.home-page .home-intro .section-head{
+  max-width:1040px;
+  margin-bottom:30px;
+}
+.home-page .home-intro h1{
+  max-width:1050px;
+  margin:12px 0 22px;
+  font-size:clamp(48px,6vw,86px);
+  line-height:1.01;
+  font-weight:800;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.home-page .home-intro .section-head p{
+  max-width:790px;
+  font-size:18px;
+  line-height:1.65;
+}
+.home-intro-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.home-meta{
+  margin:22px 0 0;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#666;
+  font-size:13px;
+  letter-spacing:.01em;
+}
+.home-page main > section:not(.home-intro){
+  padding-top:68px;
+  padding-bottom:68px;
+}
+.home-page main > section:not(.home-intro):not(.plain-law):not(.dark-panel):not(.accent-panel):not(.contact){
+  border-top:1px solid #ecece7;
+}
+.home-page .section-head{margin-bottom:36px}
+.home-page .section-head .kicker{margin-bottom:13px}
+.home-page .section-head h2{margin-top:0;margin-bottom:18px}
+.home-page .section-actions{
+  margin-top:34px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.home-page .section-more{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  border-bottom:1px solid currentColor;
+}
+.home-page .contact-simple{max-width:900px;margin:0 auto}
+.home-page .contact-note{
+  max-width:700px;
+  margin:28px 0 0;
+  color:#8d8d8a;
+  font-size:13px;
+  line-height:1.65;
+}
+.home-page .home-reference{scroll-margin-top:130px}
+@media(max-width:680px){
+  .home-page .home-intro{padding:42px 0 48px}
+  .home-page .home-intro .section-head{margin-bottom:24px}
+  .home-page .home-intro h1{
+    font-size:clamp(38px,10.7vw,48px);
+    line-height:1.04;
+    letter-spacing:-.02em;
+  }
+  .home-page .home-intro .section-head p{font-size:16px;line-height:1.68}
+  .home-page main > section:not(.home-intro){padding-top:46px;padding-bottom:46px}
+  .home-page .section-head{margin-bottom:28px}
+  .home-page .section-head .kicker{margin-bottom:11px}
+  .home-page .section-head h2{margin-bottom:16px}
+  .home-page .law-chat{right:10px;bottom:10px}
+  .home-page .law-chat-toggle{
+    padding:12px 15px;
+    font-size:12.5px;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+  }
+  .home-meta{font-size:12px;line-height:1.55}
+}

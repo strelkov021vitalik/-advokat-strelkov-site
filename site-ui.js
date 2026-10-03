@@ -1,5 +1,9 @@
 (()=>{document.addEventListener('DOMContentLoaded',()=>{document.documentElement.classList.add('motion-ready');
 
+document.querySelectorAll('.menu').forEach(menu=>{if(![...menu.querySelectorAll('a')].some(a=>a.textContent.trim()==='Справочная информация')){const a=document.createElement('a');a.href='/#spravochnaya-informaciya';a.textContent='Справочная информация';a.dataset.referenceNavAdded='true';menu.appendChild(a);}});
+
+document.querySelectorAll('[data-law-chat-open]').forEach(link=>link.addEventListener('click',e=>{const toggle=document.querySelector('.law-chat-toggle');if(toggle){e.preventDefault();toggle.click();}}));
+
 const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduceMotion&&'IntersectionObserver'in window){
   const selector=[
