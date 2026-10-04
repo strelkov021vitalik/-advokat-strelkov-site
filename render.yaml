@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: advokat-strelkov
+    runtime: static
+    repo: https://github.com/strelkov021vitalik/-advokat-strelkov-site
+    branch: main
+    buildCommand: |
+      rm -rf _render_site
+      mkdir -p _render_site
+      find . -mindepth 1 -maxdepth 1 \
+        ! -name '.git' \
+        ! -name '.github' \
+        ! -name '_render_site' \
+        ! -name 'render.yaml' \
+        ! -name 'vercel.json' \
+        ! -name 'README.md' \
+        -exec cp -R {} _render_site/ \;
+    staticPublishPath: ./_render_site
+    autoDeployTrigger: commit
+    domains:
+      - advokat-strelkov.ru
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /*.html
+    headers:
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
