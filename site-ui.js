@@ -7,27 +7,27 @@ document.querySelectorAll('[data-law-chat-open]').forEach(link=>link.addEventLis
 const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduceMotion&&'IntersectionObserver'in window){
   const selector=[
-    'main > section:not(.hero) .section-head > *',
-    'main > section:not(.hero) .card:not(.bitter-card)',
-    'main > section:not(.hero) .bitter-card > .num',
-    'main > section:not(.hero) .bitter-card > h3',
-    'main > section:not(.hero) .bitter-card > p',
-    'main > section:not(.hero) .bitter-card > .more',
-    'main > section:not(.hero) .situation-card',
-    'main > section:not(.hero) .plain-law-grid > a',
-    'main > section:not(.hero) .memo-card',
-    'main > section:not(.hero) .fact',
-    'main > section:not(.hero) .quick-nav',
-    'main > section:not(.hero) .checklist',
-    'main > section:not(.hero) .brief-box',
-    'main > section:not(.hero) .process-line',
-    'main > section:not(.hero) .practice-case',
-    'main > section:not(.hero) .article > h2',
-    'main > section:not(.hero) .article > h3',
-    'main > section:not(.hero) .article > h2 + p',
-    'main > section:not(.hero) .article > h3 + p',
-    'main > section:not(.hero) .article > .callout',
-    'main > section:not(.hero) .article > .links'
+    'main > section:not(.hero):not(.home-intro) .section-head > *',
+    'main > section:not(.hero):not(.home-intro) .card:not(.bitter-card)',
+    'main > section:not(.hero):not(.home-intro) .bitter-card > .num',
+    'main > section:not(.hero):not(.home-intro) .bitter-card > h3',
+    'main > section:not(.hero):not(.home-intro) .bitter-card > p',
+    'main > section:not(.hero):not(.home-intro) .bitter-card > .more',
+    'main > section:not(.hero):not(.home-intro) .situation-card',
+    'main > section:not(.hero):not(.home-intro) .plain-law-grid > a',
+    'main > section:not(.hero):not(.home-intro) .memo-card',
+    'main > section:not(.hero):not(.home-intro) .fact',
+    'main > section:not(.hero):not(.home-intro) .quick-nav',
+    'main > section:not(.hero):not(.home-intro) .checklist',
+    'main > section:not(.hero):not(.home-intro) .brief-box',
+    'main > section:not(.hero):not(.home-intro) .process-line',
+    'main > section:not(.hero):not(.home-intro) .practice-case',
+    'main > section:not(.hero):not(.home-intro) .article > h2',
+    'main > section:not(.hero):not(.home-intro) .article > h3',
+    'main > section:not(.hero):not(.home-intro) .article > h2 + p',
+    'main > section:not(.hero):not(.home-intro) .article > h3 + p',
+    'main > section:not(.hero):not(.home-intro) .article > .callout',
+    'main > section:not(.hero):not(.home-intro) .article > .links'
   ].join(',');
   const targets=[...new Set(document.querySelectorAll(selector))];
   targets.forEach((el,i)=>{
