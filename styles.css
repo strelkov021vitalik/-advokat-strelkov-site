@@ -2084,3 +2084,13 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
     border-right:0;
   }
 }
+
+/* Keep long homepage headings inside the mobile viewport */
+@media(max-width:680px){
+  .home-page .accent-panel .section-head h2{
+    font-size:clamp(34px,9.2vw,44px);
+    line-height:1.03;
+    letter-spacing:-.025em;
+    overflow-wrap:anywhere;
+  }
+}
