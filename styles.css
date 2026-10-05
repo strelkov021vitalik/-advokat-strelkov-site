@@ -2094,3 +2094,11 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
     overflow-wrap:anywhere;
   }
 }
+
+/* Expanded court-fee calculator 2026-10-05 */
+.fee-advanced-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.fee-advanced-form label{display:grid;gap:8px;font-size:12px;font-weight:800}
+.fee-advanced-form select,.fee-advanced-form input{width:100%;min-height:48px;border:1px solid var(--line);background:#fff;padding:11px 12px;font:inherit}
+.fee-advanced-form .btn{align-self:end}
+.fee-advanced-form output{display:flex;align-items:center;min-height:48px;padding:12px 14px;border:1px solid var(--line);background:#f7f7f4;font-weight:800}
+@media(max-width:680px){.fee-advanced-form{grid-template-columns:1fr}.fee-advanced-form .btn,.fee-advanced-form output{width:100%}}
