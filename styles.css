@@ -2102,3 +2102,16 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 .fee-advanced-form .btn{align-self:end}
 .fee-advanced-form output{display:flex;align-items:center;min-height:48px;padding:12px 14px;border:1px solid var(--line);background:#f7f7f4;font-weight:800}
 @media(max-width:680px){.fee-advanced-form{grid-template-columns:1fr}.fee-advanced-form .btn,.fee-advanced-form output{width:100%}}
+
+
+/* Mobile heading wrap fix 2026-10-07: avoid orphaned single-letter line */
+@media(max-width:680px){
+  .home-page .accent-panel .section-head h2{
+    font-size:clamp(30px,8.35vw,40px);
+    line-height:1.04;
+    letter-spacing:-.028em;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:auto;
+  }
+}
