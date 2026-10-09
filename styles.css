@@ -2115,3 +2115,14 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
     hyphens:auto;
   }
 }
+
+
+/* Context links and appointment information, 2026-10-09. */
+.home-page .service-links{font-size:14px;line-height:1.7;margin:0 0 18px}
+.home-page .service-links a,.appointment-info a,.related-help a{text-decoration:underline;text-underline-offset:3px}
+.appointment-info{max-width:700px;margin-top:28px}
+.appointment-info h3{font-size:19px;line-height:1.4;margin:24px 0 10px;color:#fff}
+.appointment-info p{font-size:15px;line-height:1.7;color:#c9c9c5}
+.appointment-info .map-link{display:inline-block;color:#fff;max-width:100%;overflow-wrap:break-word}
+.related-help{border-top:1px solid var(--line)}
+@media(max-width:680px){.appointment-info h3{font-size:18px}.appointment-info p{font-size:15px}.home-page .service-links{font-size:14px}}
