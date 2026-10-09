@@ -2149,3 +2149,9 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 .citizen-topic-grid .memo-card{min-width:0}
 .citizen-topic-grid h3{overflow-wrap:break-word}
 @media(max-width:680px){.citizen-topic-grid{grid-template-columns:1fr}}
+
+/* Keep the new guide headings below the fixed header and sticky contents. */
+.citizen-guide .article h2[id],#obmen-tovara,#nekachestvennaya-usluga-remont{scroll-margin-top:180px}
+#business-guides{scroll-margin-top:130px;margin-top:42px}
+#business-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){.citizen-guide .article h2[id],#obmen-tovara,#nekachestvennaya-usluga-remont{scroll-margin-top:160px}}
