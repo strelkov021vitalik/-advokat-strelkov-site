@@ -2155,3 +2155,9 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 #business-guides{scroll-margin-top:130px;margin-top:42px}
 #business-guides+.memo-grid{margin-bottom:44px}
 @media(max-width:680px){.citizen-guide .article h2[id],#obmen-tovara,#nekachestvennaya-usluga-remont{scroll-margin-top:160px}}
+
+/* Criminal comparisons: clear the sticky contents when following topic links. */
+#vzyatka-ili-moshennichestvo,#hranenie-ili-pokushenie-na-sbyt,#prisvoenie-ili-krazha,#razgranichenie,#pdd{scroll-margin-top:180px}
+#criminal-guides{scroll-margin-top:130px;margin-top:42px}
+#criminal-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){#vzyatka-ili-moshennichestvo,#hranenie-ili-pokushenie-na-sbyt,#prisvoenie-ili-krazha,#razgranichenie,#pdd{scroll-margin-top:160px}}
