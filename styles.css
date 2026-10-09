@@ -1268,40 +1268,8 @@ section{padding:88px 0}
 .cta{padding:72px 0}
 .cta h2{font-size:clamp(38px,4.6vw,60px)}
 
-/* Расширенный подвал */
+/* Компактный подвал: авторство и примечание */
 footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spacing:0}
-.footer-rich{
-  display:grid;
-  grid-template-columns:1.15fr 1fr 1fr;
-  gap:44px;
-  padding-top:48px;
-  padding-bottom:34px;
-}
-.footer-rich strong{
-  display:block;
-  color:#fff;
-  font-size:17px;
-  line-height:1.25;
-  margin-bottom:8px;
-}
-.footer-rich span,.footer-rich a{
-  display:block;
-  color:#a5a5a0;
-  font-size:12px;
-  line-height:1.65;
-}
-.footer-rich a:hover{color:var(--accent)}
-.footer-links{
-  display:grid;
-  grid-template-columns:1fr;
-  gap:5px;
-}
-.footer-contact a{
-  color:#fff;
-  font-size:15px;
-  font-weight:700;
-  margin-bottom:6px;
-}
 .footer-legal{
   display:flex;
   justify-content:space-between;
@@ -1407,12 +1375,6 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
   .quick-nav,.checklist{border-radius:14px}
   .cta{padding:54px 0}
   .cta h2{font-size:36px}
-  .footer-rich{
-    grid-template-columns:1fr;
-    gap:24px;
-    padding-top:38px;
-    padding-bottom:28px;
-  }
   .footer-legal{
     display:block;
     padding-top:16px;
