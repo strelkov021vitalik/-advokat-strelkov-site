@@ -2143,3 +2143,9 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
  .citizen-guide .hero h1{font-size:clamp(29px,8vw,40px);line-height:1.12;hyphens:auto}
  .citizen-guide .article h2{font-size:26px;line-height:1.2;overflow-wrap:break-word}
 }
+
+/* Citizen topic catalogue, 2026-10-09. */
+.citizen-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.citizen-topic-grid .memo-card{min-width:0}
+.citizen-topic-grid h3{overflow-wrap:break-word}
+@media(max-width:680px){.citizen-topic-grid{grid-template-columns:1fr}}
