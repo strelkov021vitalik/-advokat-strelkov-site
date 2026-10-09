@@ -2126,3 +2126,20 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 .appointment-info .map-link{display:inline-block;color:#fff;max-width:100%;overflow-wrap:break-word}
 .related-help{border-top:1px solid var(--line)}
 @media(max-width:680px){.appointment-info h3{font-size:18px}.appointment-info p{font-size:15px}.home-page .service-links{font-size:14px}}
+
+/* Compact mobile chat and readable practical guides, 2026-10-09. */
+.law-chat-icon{display:none}
+.citizen-guide .hero .container{display:block}
+.citizen-guide .hero h1{max-width:1000px;overflow-wrap:break-word}
+.guide-sources a{overflow-wrap:anywhere}
+#citizen-guides{scroll-margin-top:130px;margin-top:12px}
+#citizen-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){
+ .law-chat,.home-page .law-chat{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+ .law-chat .law-chat-toggle,.home-page .law-chat .law-chat-toggle{width:48px;height:48px;min-width:48px;padding:12px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+ .law-chat-icon{display:block;flex:none}.law-chat-label{display:none}
+ .law-chat-at-contacts .law-chat-toggle[aria-expanded="false"]{display:none}
+ .law-chat-panel{bottom:calc(72px + env(safe-area-inset-bottom,0px));max-height:calc(100dvh - 100px);width:auto}
+ .citizen-guide .hero h1{font-size:clamp(29px,8vw,40px);line-height:1.12;hyphens:auto}
+ .citizen-guide .article h2{font-size:26px;line-height:1.2;overflow-wrap:break-word}
+}
