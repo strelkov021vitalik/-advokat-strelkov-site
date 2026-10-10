@@ -2126,3 +2126,8 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 
 /* Contact anchor: keep the section heading below the sticky navigation. */
 #contacts{scroll-margin-top:140px}
+
+/* Allow longer navigation rows to fit tablets without overlapping the logo. */
+@media(min-width:681px){
+  header .menu{flex-wrap:wrap;row-gap:0}
+}
