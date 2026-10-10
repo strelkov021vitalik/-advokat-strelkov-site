@@ -2123,3 +2123,6 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 #criminal-guides{scroll-margin-top:130px;margin-top:42px}
 #criminal-guides+.memo-grid{margin-bottom:44px}
 @media(max-width:680px){#vzyatka-ili-moshennichestvo,#hranenie-ili-pokushenie-na-sbyt,#prisvoenie-ili-krazha,#razgranichenie,#pdd{scroll-margin-top:160px}}
+
+/* Contact anchor: keep the section heading below the sticky navigation. */
+#contacts{scroll-margin-top:140px}
