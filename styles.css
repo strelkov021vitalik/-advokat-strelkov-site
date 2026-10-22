@@ -1784,21 +1784,6 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
 }
 
 
-/* Scroll reveal 2026-10-02 — restrained boutique motion */
-.motion-ready .reveal-up{
-  --reveal-distance:12px;
-  opacity:1;
-  transform:none;
-}
-.motion-ready .reveal-up.is-visible{
-  animation:reveal-up 440ms cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms) backwards;
-  opacity:1;
-  transform:none;
-}
-@keyframes reveal-up{
-  from{opacity:.94;transform:translate3d(0,var(--reveal-distance,12px),0)}
-  to{opacity:1;transform:none}
-}
 /* Density guardrails: one accent, more air, less simultaneous noise */
 .section-head p,.lead{max-width:720px}
 .article p,.article li{max-width:72ch}
@@ -1810,24 +1795,9 @@ main > section:not(.hero){overflow:clip}
   .seal,.visual:after{display:none}
   .visual:before{opacity:.82}
 }
-@media(max-width:680px){
-  .motion-ready .reveal-up{
-    --reveal-distance:8px;
-  }
-  .motion-ready .reveal-up.is-visible{
-    animation-duration:360ms;
-  }
-  .section-head p,.lead,.article p,.article li{max-width:none}
+@media(max-width:680px){.section-head p,.lead,.article p,.article li{max-width:none}
 }
-@media(prefers-reduced-motion:reduce){
-  .motion-ready .reveal-up,
-  .motion-ready .reveal-up.is-visible{
-    opacity:1!important;
-    transform:none!important;
-    transition:none!important;
-    animation:none!important;
-  }
-}
+
 
 
 /* Bitter card mobile contrast fix 2026-10-02 */
