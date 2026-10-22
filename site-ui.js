@@ -1,54 +1,8 @@
-(()=>{document.addEventListener('DOMContentLoaded',()=>{document.documentElement.classList.add('motion-ready');
+(()=>{document.addEventListener('DOMContentLoaded',()=>{
 
 document.querySelectorAll('.menu').forEach(menu=>{if(![...menu.querySelectorAll('a')].some(a=>a.textContent.trim()==='Справочная информация')){const a=document.createElement('a');a.href='/#spravochnaya-informaciya';a.textContent='Справочная информация';a.dataset.referenceNavAdded='true';menu.appendChild(a);}});
 
 document.querySelectorAll('[data-law-chat-open]').forEach(link=>link.addEventListener('click',e=>{const toggle=document.querySelector('.law-chat-toggle');if(toggle){e.preventDefault();toggle.click();}}));
-
-const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-if(!reduceMotion&&'IntersectionObserver'in window){
-  const selector=[
-    'main > section:not(.hero):not(.home-intro) .section-head > *',
-    'main > section:not(.hero):not(.home-intro) .card:not(.bitter-card)',
-    'main > section:not(.hero):not(.home-intro) .bitter-card > .num',
-    'main > section:not(.hero):not(.home-intro) .bitter-card > h3',
-    'main > section:not(.hero):not(.home-intro) .bitter-card > p',
-    'main > section:not(.hero):not(.home-intro) .bitter-card > .more',
-    'main > section:not(.hero):not(.home-intro) .situation-card',
-    'main > section:not(.hero):not(.home-intro) .plain-law-grid > a',
-    'main > section:not(.hero):not(.home-intro) .memo-card',
-    'main > section:not(.hero):not(.home-intro) .fact',
-    'main > section:not(.hero):not(.home-intro) .quick-nav',
-    'main > section:not(.hero):not(.home-intro) .checklist',
-    'main > section:not(.hero):not(.home-intro) .brief-box',
-    'main > section:not(.hero):not(.home-intro) .process-line',
-    'main > section:not(.hero):not(.home-intro) .practice-case',
-    'main > section:not(.hero):not(.home-intro) .article > h2',
-    'main > section:not(.hero):not(.home-intro) .article > h3',
-    'main > section:not(.hero):not(.home-intro) .article > h2 + p',
-    'main > section:not(.hero):not(.home-intro) .article > h3 + p',
-    'main > section:not(.hero):not(.home-intro) .article > .callout',
-    'main > section:not(.hero):not(.home-intro) .article > .links'
-  ].join(',');
-  const targets=[...new Set(document.querySelectorAll(selector))];
-  targets.forEach((el,i)=>{
-    el.classList.add('reveal-up');
-    const parent=el.parentElement;
-    if(parent){
-      const siblings=[...parent.children].filter(x=>targets.includes(x));
-      const pos=Math.max(0,siblings.indexOf(el));
-      el.style.setProperty('--reveal-delay',Math.min(pos*32,96)+'ms');
-    }
-  });
-  const observer=new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  },{rootMargin:'0px 0px -6% 0px',threshold:0.06});
-  targets.forEach(el=>observer.observe(el));
-}
 
 const article=document.querySelector('.article');
 if(article&&document.body.scrollHeight>window.innerHeight*1.55){
