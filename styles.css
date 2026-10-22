@@ -2104,3 +2104,14 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
 @media(min-width:681px){
   header .menu{flex-wrap:wrap;row-gap:0}
 }
+
+/* 2026-10-22: prevent homepage news cards from widening or clipping on phones. */
+.home-page .home-current-grid,
+.home-page .home-current-grid .card{min-width:0;max-width:100%}
+.home-page .home-current-grid .card h3,
+.home-page .home-current-grid .card p,
+.home-page .home-current-grid .card .num{overflow-wrap:anywhere}
+@media(max-width:680px){
+  .home-page .home-current-grid{grid-template-columns:minmax(0,1fr)}
+  .home-page .home-current-grid .card:nth-child(n){padding-left:0;padding-right:0}
+}
