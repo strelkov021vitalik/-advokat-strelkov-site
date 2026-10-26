@@ -55,5 +55,13 @@ if(root){
   apply();
 }
 
+// Record intent to telephone the advocate without collecting the number or visitor details.
+document.addEventListener('click',event=>{
+  const target=event.target;
+  const link=target instanceof Element?target.closest('a[href^="tel:"]'):null;
+  if(!link||typeof window.ym!=='function')return;
+  window.ym(113576596,'reachGoal','phone_click');
+},true);
+
 document.querySelectorAll('[data-print-page]').forEach(button=>button.addEventListener('click',()=>window.print()));
 });})();
