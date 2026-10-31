@@ -1,0 +1,2187 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Калькулятор договорной неустойки — адвокат Стрелков</title><meta name="description" content="Рассчитайте договорную пеню по дневной ставке: несколько периодов, изменение остатка долга, предел суммы и печать расчёта."><meta name="robots" content="index,follow"><link rel="canonical" href="https://advokat-strelkov.ru/kalkulyator-neustoyki"><style>:root{
+  --bg:#ffffff;
+  --surface:#ffffff;
+  --surface-soft:#f4f4f1;
+  --text:#111111;
+  --muted:#737373;
+  --line:#deded9;
+  --accent:#ff6700;
+  --accent-soft:#fff0e6;
+  --dark:#181818;
+  --black:#000000;
+  --white:#ffffff;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto;display:block}
+.container{width:min(1320px,94%);margin:auto}
+
+/* Верхняя строка */
+.topbar{
+  background:#f6f6f3;
+  color:#7b7b78;
+  border-bottom:1px solid var(--line);
+  font-size:10px;
+  letter-spacing:.075em;
+  text-transform:uppercase;
+}
+.topbar .container{
+  min-height:34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+}
+
+/* Навигация */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(255,255,255,.95);
+  border-bottom:1px solid var(--line);
+  backdrop-filter:blur(15px);
+}
+.nav{
+  min-height:84px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.logo{display:flex;align-items:center}
+.logo img{height:48px;width:auto;background:transparent;padding:0}
+.menu{
+  display:flex;
+  gap:28px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+}
+.menu a{position:relative;padding:7px 0}
+.menu a:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:100%;
+  bottom:1px;
+  height:2px;
+  background:var(--accent);
+  transition:right .22s ease;
+}
+.menu a:hover:after{right:0}
+.phone{
+  display:inline-flex;
+  align-items:center;
+  min-height:42px;
+  padding:0 17px;
+  border-radius:999px;
+  background:var(--dark);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.02em;
+  white-space:nowrap;
+  transition:.2s ease;
+}
+.phone:hover{background:var(--accent);color:#111}
+.phone b{display:none}
+
+/* Hero */
+.hero{
+  color:var(--text);
+  background:var(--white);
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero:after{display:none}
+.hero .container{
+  min-height:520px;
+  display:grid;
+  grid-template-columns:1.18fr .82fr;
+  gap:82px;
+  align-items:center;
+  padding-top:32px;
+  padding-bottom:44px;
+}
+.kicker{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.095em;
+  text-transform:uppercase;
+  color:#6e6e6b;
+}
+.hero h1,
+.section-head h2,
+.cta h2,
+.contact h2{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+}
+.hero h1{
+  max-width:980px;
+  margin:18px 0 24px;
+  font-size:clamp(56px,7.2vw,102px);
+  line-height:.98;
+  font-weight:800;
+  letter-spacing:.01em;
+  text-transform:uppercase;
+}
+.hero h1:after{
+  content:".";
+  color:var(--accent);
+}
+.hero h1 span{color:inherit}
+.lead{
+  max-width:760px;
+  margin:0;
+  color:#50504d;
+  font-size:18px;
+  line-height:1.58;
+}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:49px;
+  padding:0 25px;
+  border:1px solid var(--dark);
+  border-radius:999px;
+  background:var(--dark);
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+  transition:.2s ease;
+}
+.btn:hover{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:#111;
+  transform:translateY(-1px);
+}
+.btn.ghost{
+  color:#111;
+  background:#efefec;
+  border-color:#efefec;
+}
+.btn.ghost:hover{background:var(--accent-soft);border-color:var(--accent-soft)}
+
+.visual{
+  min-height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+}
+.visual:before{
+  content:"";
+  position:absolute;
+  width:min(360px,78%);
+  aspect-ratio:1;
+  border-radius:50%;
+  background:var(--accent);
+  transform:translate(-2%,2%);
+}
+.visual:after{
+  content:"";
+  position:absolute;
+  width:120px;
+  height:16px;
+  background:var(--dark);
+  right:9%;
+  bottom:18%;
+  transform:rotate(-34deg);
+}
+.visual img{
+  position:relative;
+  z-index:2;
+  width:min(300px,68%);
+  padding:0;
+  background:#fff;
+  border:none;
+  box-shadow:none;
+}
+.seal{
+  position:absolute;
+  z-index:3;
+  right:0;
+  top:6%;
+  width:128px;
+  height:128px;
+  padding:0;
+  border:1px solid #111;
+  border-radius:50%;
+  background:#fff;
+  color:#111;
+  display:grid;
+  place-items:center;
+  font-size:9px;
+  font-weight:800;
+  line-height:1.3;
+  letter-spacing:.09em;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+/* Секции */
+section{padding:108px 0}
+.ivory{background:var(--surface-soft)}
+.section-head{max-width:940px;margin-bottom:52px}
+.section-head .kicker{color:#777}
+.section-head h2{
+  margin:11px 0 16px;
+  font-size:clamp(40px,5.4vw,74px);
+  line-height:1.01;
+  font-weight:800;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+}
+.section-head p{max-width:760px;margin:0;color:var(--muted);font-size:16px}
+
+/* Карточки */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.card{
+  position:relative;
+  min-height:255px;
+  padding:32px 26px 34px 0;
+  background:transparent;
+  border:none;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+  border-radius:0;
+  transition:background .18s ease;
+}
+.card:before{
+  content:"";
+  position:absolute;
+  top:-1px;
+  left:0;
+  width:0;
+  height:3px;
+  background:var(--accent);
+  transition:width .25s ease;
+}
+.card:hover:before{width:100%}
+.card:nth-child(3n){padding-left:26px;border-right:0}
+.card:nth-child(3n+2){padding-left:26px}
+.card:hover{background:#fafaf8;transform:none;box-shadow:none}
+.card .num{
+  display:block;
+  color:var(--accent);
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.card h3{
+  margin:21px 0 12px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:25px;
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:0;
+}
+.card p{margin:0;color:var(--muted);font-size:14px;line-height:1.58}
+.card .more{
+  display:inline-block;
+  margin-top:22px;
+  color:#111;
+  font-size:11px;
+  font-weight:700;
+  text-transform:uppercase;
+  letter-spacing:.035em;
+  border-bottom:1px solid #111;
+}
+
+/* Статьи */
+.article{max-width:820px;margin-left:auto;margin-right:auto}
+.article h2{
+  margin:64px 0 18px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:clamp(34px,4.2vw,52px);
+  line-height:1.02;
+  font-weight:800;
+  letter-spacing:0;
+}
+.article h3{
+  margin:42px 0 12px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:25px;
+  line-height:1.16;
+  font-weight:700;
+  letter-spacing:-.012em;
+}
+.article p,.article li{color:#3f3f3d;font-size:16px;line-height:1.74}
+.article ul{padding-left:22px}
+.callout{
+  margin:36px 0;
+  padding:24px 26px;
+  border:0;
+  border-left:5px solid var(--accent);
+  border-radius:0;
+  background:var(--accent-soft);
+  color:#333;
+}
+.toc{
+  margin:30px 0;
+  padding:24px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:transparent;
+}
+.toc a{display:block;padding:8px 0;color:#111;font-weight:600}
+.facts{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:0;
+  margin:34px 0;
+  border-top:1px solid var(--line);
+}
+.fact{
+  padding:22px 18px 22px 0;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid var(--line);
+  border-right:1px solid var(--line);
+}
+.fact:last-child{border-right:0;padding-left:18px}
+.fact:nth-child(2){padding-left:18px}
+.fact small{display:block;color:#888;font-size:9px;letter-spacing:.08em;text-transform:uppercase}
+.fact b{display:block;margin-top:10px;font-size:16px}
+
+/* Хлебные крошки и ссылки */
+.breadcrumbs{padding:18px 0;color:#8a8a86;font-size:11px;letter-spacing:.02em}
+.breadcrumbs a{color:#111}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.links a{
+  display:inline-flex;
+  align-items:center;
+  min-height:38px;
+  padding:0 14px;
+  border:0;
+  border-radius:999px;
+  background:#efefec;
+  color:#111;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+  transition:.18s ease;
+}
+.links a:hover{background:var(--accent);color:#111}
+
+/* Новые цветовые панели */
+.dark-panel{
+  background:var(--dark);
+  color:#fff;
+}
+.dark-panel .kicker{color:var(--accent)}
+.dark-panel .section-head p,
+.dark-panel .article p,
+.dark-panel .article li{color:#b8b8b4}
+.dark-panel .facts{border-color:#393939}
+.dark-panel .fact{border-color:#393939}
+.dark-panel .fact small{color:#888}
+.dark-panel .fact b{color:#fff}
+
+.accent-panel{
+  background:var(--accent);
+  color:#111;
+}
+.accent-panel .kicker{color:#111}
+.accent-panel .section-head p{color:#43260f}
+.accent-panel .card{
+  border-color:rgba(17,17,17,.28);
+}
+.accent-panel .card .num{color:#111}
+.accent-panel .card:hover{background:rgba(255,255,255,.18)}
+.accent-panel .card:before{background:#111}
+
+/* CTA */
+.cta{
+  background:var(--accent);
+  color:#111;
+  padding:82px 0;
+  border:0;
+}
+.cta .container{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:42px;
+}
+.cta h2{
+  max-width:780px;
+  margin:0 0 10px;
+  font-size:clamp(42px,5vw,70px);
+  line-height:1.0;
+  font-weight:800;
+  letter-spacing:-.016em;
+  text-transform:uppercase;
+}
+.cta p{margin:0;color:#4a2a15}
+.cta .btn{
+  flex:0 0 auto;
+  background:#111;
+  border-color:#111;
+  color:#fff;
+}
+.cta .btn:hover{background:#fff;border-color:#fff;color:#111}
+
+/* Контакты */
+.contact{
+  background:var(--dark);
+  color:#fff;
+  border-top:0;
+}
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:80px;
+}
+.contact h2{
+  margin:10px 0 18px;
+  font-size:clamp(44px,5vw,70px);
+  line-height:.94;
+  font-weight:800;
+  letter-spacing:-.06em;
+  text-transform:uppercase;
+}
+.contact .kicker{color:var(--accent)}
+.contact .muted{color:#aaa}
+.contact-info div{padding:16px 0;border-bottom:1px solid #343434}
+.contact-info small{display:block;color:#777;font-size:9px;letter-spacing:.09em;text-transform:uppercase}
+.ethics{
+  padding:30px;
+  background:#242424;
+  color:#fff;
+  border:0;
+  border-radius:0;
+}
+.ethics h3{
+  margin-top:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:27px;
+  line-height:1.12;
+  font-weight:700;
+  letter-spacing:-.012em;
+}
+.ethics p{color:#aaa;font-size:14px}
+.contact .links a{background:#303030;color:#fff}
+.contact .links a:hover{background:var(--accent);color:#111}
+
+/* Подвал */
+footer{
+  background:#000;
+  color:#8e8e8e;
+  padding:34px 0;
+  font-size:10px;
+  letter-spacing:.045em;
+  text-transform:uppercase;
+}
+.footer{display:flex;justify-content:space-between;gap:24px}
+.notice{
+  margin-top:30px;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#7a7a7a;
+  font-size:12px;
+}
+
+@media(max-width:980px){
+  .menu{display:none}
+  .hero .container{
+    min-height:auto;
+    grid-template-columns:1fr;
+    gap:20px;
+    padding-top:74px;
+    padding-bottom:70px;
+  }
+  .visual{min-height:290px}
+  .grid{grid-template-columns:1fr 1fr}
+  .card:nth-child(n){padding:28px 22px 30px 0;border-right:1px solid var(--line)}
+  .card:nth-child(2n){padding-left:22px;border-right:0}
+  .facts{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr;gap:44px}
+  .cta .container{display:block}
+  .cta .btn{margin-top:24px}
+}
+
+@media(max-width:620px){
+  .container{width:min(92%,1320px)}
+  .topbar .container{font-size:9px}
+  .topbar .container span:last-child{display:none}
+  .nav{min-height:70px;gap:12px}
+  .logo img{height:42px}
+  .phone{min-height:38px;padding:0 12px;font-size:9.5px;max-width:none;white-space:nowrap}
+  .hero .container{padding-top:54px;padding-bottom:54px}
+  .hero h1{font-size:44px;line-height:1.02;letter-spacing:.01em}
+  .lead{font-size:16px}
+  .visual{display:none}
+  section{padding:72px 0}
+  .section-head h2{font-size:40px}
+  .grid,.facts{grid-template-columns:1fr}
+  .card:nth-child(n){padding:26px 0 28px;border-right:0}
+  .article h2{font-size:33px}
+  .article h3{font-size:22px}
+  .cta{padding:62px 0}
+  .cta h2{font-size:40px}
+  .contact h2{font-size:40px}
+  .footer{display:block}
+  .footer span{display:block;margin:6px 0}
+}
+
+
+/* Навигация по длинным страницам */
+.service-tools{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:28px;
+  margin-bottom:26px;
+}
+.quick-nav,
+.checklist{
+  background:#f4f4f1;
+  padding:26px;
+}
+.quick-nav strong,
+.checklist strong{
+  display:block;
+  margin-bottom:14px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:20px;
+  line-height:1.1;
+  letter-spacing:.005em;
+}
+.quick-nav a{
+  display:block;
+  padding:10px 0;
+  border-bottom:1px solid #d8d8d3;
+  color:#111;
+  font-size:13px;
+  font-weight:650;
+}
+.quick-nav a:last-child{border-bottom:0}
+.quick-nav a:hover{color:var(--accent)}
+.checklist ul{margin:0;padding-left:20px}
+.checklist li{margin:8px 0;color:#4d4d49;font-size:14px;line-height:1.55}
+
+/* Блок срочной навигации на главной */
+.urgent-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  background:var(--line);
+  border:1px solid var(--line);
+}
+.urgent-card{
+  display:block;
+  min-height:190px;
+  padding:26px;
+  background:#fff;
+  transition:.2s ease;
+}
+.urgent-card:hover{background:var(--accent-soft)}
+.urgent-card .num{
+  display:block;
+  margin-bottom:28px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+.urgent-card h3{
+  margin:0 0 9px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:24px;
+  line-height:1.08;
+  letter-spacing:-.04em;
+}
+.urgent-card p{margin:0;color:#72726f;font-size:13px;line-height:1.5}
+
+/* Аккордеоны: текст остаётся в HTML и доступен поисковикам */
+.accordion{
+  margin:18px 0;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.accordion + .accordion{border-top:0;margin-top:-18px}
+.accordion summary{
+  position:relative;
+  cursor:pointer;
+  list-style:none;
+  padding:17px 42px 17px 0;
+  color:#111;
+  font-size:13px;
+  font-weight:750;
+}
+.accordion summary::-webkit-details-marker{display:none}
+.accordion summary:after{
+  content:"+";
+  position:absolute;
+  right:4px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--accent);
+  font-size:24px;
+  font-weight:500;
+}
+.accordion[open] summary:after{content:"−"}
+.accordion-body{padding:0 0 18px}
+.accordion-body p:first-child{margin-top:0}
+
+.dark-panel .accordion{border-color:#393939}
+.dark-panel .accordion summary{color:#fff}
+.dark-panel .accordion-body p{color:#b8b8b4}
+
+@media(max-width:980px){
+  .service-tools{grid-template-columns:1fr}
+  .urgent-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  .urgent-grid{grid-template-columns:1fr}
+  .urgent-card{min-height:auto}
+  .service-tools{gap:12px}
+  .quick-nav,.checklist{padding:22px}
+}
+
+
+/* Читаемая типографика: без слипания жирных букв */
+.hero h1{
+  letter-spacing:.012em;
+  line-height:1.01;
+}
+.section-head h2{
+  letter-spacing:.008em;
+  line-height:1.04;
+}
+.cta h2,
+.contact h2{
+  letter-spacing:.008em;
+  line-height:1.04;
+}
+.card h3,
+.article h2,
+.article h3,
+.ethics h3,
+.urgent-card h3,
+.quick-nav strong,
+.checklist strong{
+  letter-spacing:.004em;
+}
+.article h2{line-height:1.08}
+.article h3,.card h3,.urgent-card h3{line-height:1.18}
+
+@media(max-width:620px){
+  .nav{
+    min-height:70px;
+    gap:10px;
+  }
+  .logo{flex:0 0 auto}
+  .phone{
+    flex:0 0 auto;
+    margin-left:auto;
+    min-height:38px;
+    max-width:none;
+    padding:0 11px;
+    font-size:9px;
+    white-space:nowrap;
+    overflow:visible;
+    text-overflow:clip;
+  }
+  .hero h1{
+    font-size:44px;
+    line-height:1.04;
+    letter-spacing:.012em;
+  }
+  .section-head h2,
+  .cta h2,
+  .contact h2{
+    line-height:1.06;
+    letter-spacing:.008em;
+  }
+}
+
+
+/* Шапка: крупный бренд и однострочное меню */
+.nav{
+  min-height:92px;
+  gap:22px;
+  flex-wrap:nowrap;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:0 0 auto;
+  white-space:nowrap;
+}
+ .logo img{
+  height:72px;
+  width:auto;
+}
+.menu{
+  flex:1 1 auto;
+  flex-wrap:nowrap;
+  gap:18px;
+  min-width:0;
+  white-space:nowrap;
+}
+.menu a{
+  flex:0 0 auto;
+}
+.phone{
+  flex:0 0 auto;
+}
+
+/* Планшеты: сохраняем меню одной строкой, телефон убираем ради навигации */
+@media(max-width:1180px){
+  .container{width:min(96%,1320px)}
+  .nav{gap:16px}
+  .logo{gap:9px}
+  .logo img{height:64px}
+    .menu{gap:13px;font-size:9.5px;letter-spacing:.035em}
+  .phone{display:none}
+}
+
+/* На iPad и близких ширинах меню остаётся горизонтальным */
+@media(max-width:980px){
+  .menu{
+    display:flex;
+    gap:10px;
+    font-size:8.8px;
+  }
+  .nav{min-height:82px;gap:12px}
+  .logo img{height:60px}
+  }
+
+/* Компактные экраны: вместо сжатого меню оставляем бренд и телефон */
+@media(max-width:680px){
+  .menu{display:none}
+  .phone{
+    display:inline-flex;
+    margin-left:auto;
+  }
+}
+
+/* Телефон */
+@media(max-width:620px){
+  .nav{min-height:76px}
+  .logo{gap:8px}
+  .logo img{height:54px}
+}
+
+
+/* Горькие ошибки */
+.bitter-card{
+  background:#181818;
+  color:#fff;
+  padding-left:26px;
+}
+.bitter-card:hover{background:#222}
+.bitter-card .num{color:var(--accent)}
+.bitter-card h3{color:#fff}
+.bitter-card p{color:#bdbdb8}
+.bitter-card .more{color:#fff;border-color:#fff}
+.bitter-card:before{background:var(--accent)}
+
+.bitter-hero{
+  background:#181818;
+  color:#fff;
+  border-bottom:1px solid #333;
+}
+.bitter-hero .article{padding-top:28px;padding-bottom:20px}
+.bitter-hero .kicker{color:var(--accent)}
+.bitter-hero h1{
+  margin:16px 0 24px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:clamp(58px,8vw,118px);
+  line-height:.92;
+  font-weight:800;
+  letter-spacing:.005em;
+  text-transform:uppercase;
+}
+.bitter-lead{
+  max-width:760px;
+  margin:0 0 34px;
+  color:#d6d6d2;
+  font-size:21px;
+  line-height:1.55;
+}
+.bitter-hero .callout{
+  background:#252525;
+  color:#dededa;
+  border-left-color:var(--accent);
+}
+.bitter-summary{
+  margin:72px 0 36px;
+  padding:36px;
+  background:#181818;
+  color:#fff;
+  border-left:7px solid var(--accent);
+}
+.bitter-summary span{
+  display:block;
+  margin-bottom:10px;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.bitter-summary strong{
+  display:block;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  font-size:clamp(32px,5vw,56px);
+  line-height:1;
+  text-transform:uppercase;
+}
+.bitter-summary p{color:#c3c3bf}
+
+@media(max-width:620px){
+  .bitter-card{padding-left:0}
+  .bitter-hero h1{font-size:52px}
+  .bitter-lead{font-size:18px}
+  .bitter-summary{padding:26px 22px}
+}
+
+
+/* Конверсия в звонок */
+@media(max-width:680px){
+  .phone{
+    display:flex !important;
+    position:fixed;
+    right:14px;
+    bottom:14px;
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    padding:0 18px;
+    border-radius:999px;
+    background:var(--accent);
+    color:#111;
+    box-shadow:0 10px 28px rgba(0,0,0,.24);
+    font-weight:800;
+    text-decoration:none;
+    letter-spacing:.01em;
+  }
+  .phone b{display:none}
+}
+
+
+/* Мобильная навигация: меню всегда доступно */
+@media(max-width:680px){
+  header{
+    position:sticky;
+    top:0;
+  }
+  .nav{
+    min-height:auto;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px 12px;
+    padding-top:8px;
+    padding-bottom:0;
+  }
+  .logo{
+    order:1;
+    flex:0 0 auto;
+  }
+  .logo img{
+    height:54px;
+  }
+  .menu{
+    order:3;
+    display:flex !important;
+    flex:0 0 100%;
+    width:100%;
+    max-width:100%;
+    justify-content:flex-start;
+    align-items:center;
+    gap:18px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:10px 0 12px;
+    margin:0;
+    border-top:1px solid var(--line);
+    font-size:10px;
+    letter-spacing:.035em;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+  .menu a{
+    flex:0 0 auto;
+    padding:4px 0;
+  }
+  .phone{
+    display:flex !important;
+    position:fixed;
+    right:14px;
+    bottom:14px;
+    z-index:9999;
+    align-items:center;
+    justify-content:center;
+    min-height:52px;
+    padding:0 18px;
+    border-radius:999px;
+    background:var(--accent);
+    color:#111;
+    box-shadow:0 10px 28px rgba(0,0,0,.24);
+    font-weight:800;
+    text-decoration:none;
+    letter-spacing:.01em;
+  }
+}
+
+
+/* 2026-09-28: iPhone/Safari mobile header fix.
+   backdrop-filter on sticky header creates a containing block for fixed descendants in Safari,
+   so the phone button must remain in normal header flow on compact screens. */
+@media(max-width:680px){
+  .nav{
+    padding-top:10px;
+    padding-bottom:0;
+  }
+  .logo{
+    order:1;
+  }
+  .logo img{
+    height:48px;
+  }
+  .phone{
+    position:static !important;
+    order:2;
+    margin-left:auto;
+    right:auto;
+    bottom:auto;
+    z-index:auto;
+    min-height:42px;
+    padding:0 14px;
+    font-size:10px;
+    box-shadow:none;
+  }
+  .menu{
+    order:3;
+    gap:15px;
+    padding:10px 0 11px;
+    font-size:9.5px;
+  }
+}
+
+@media(max-width:430px){
+  .hero .container{
+    padding-top:44px;
+    padding-bottom:50px;
+  }
+  .hero h1{
+    font-size:40px;
+    line-height:1.03;
+  }
+  .logo img{
+    height:46px;
+  }
+  .phone{
+    min-height:40px;
+    padding:0 12px;
+    font-size:9.5px;
+  }
+}
+
+
+/* 2026-09-28: performance tuning */
+main > section:not(.hero){
+  content-visibility:visible;
+}
+@media(max-width:680px){
+  header{
+    backdrop-filter:none;
+    -webkit-backdrop-filter:none;
+    background:#fff;
+  }
+}
+
+/* Виджет первичного обращения */
+.law-chat{position:fixed;right:22px;bottom:22px;z-index:1000;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}.law-chat-toggle,.law-chat-send{border:0;border-radius:999px;background:#181818;color:#fff;font-weight:800;padding:15px 20px;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.18)}.law-chat-toggle:hover,.law-chat-send:hover{background:#ff6700;color:#111}.law-chat-panel{position:absolute;right:0;bottom:62px;width:min(390px,calc(100vw - 28px));max-height:min(680px,calc(100vh - 110px));overflow:auto;background:#fff;border:1px solid #deded9;box-shadow:0 20px 60px rgba(0,0,0,.22);padding:24px}.law-chat-close{position:absolute;right:12px;top:8px;border:0;background:transparent;font-size:28px;cursor:pointer}.law-chat-head{display:grid;gap:5px;padding-right:28px;margin-bottom:18px}.law-chat-head strong{font-size:22px}.law-chat-head span,.law-chat-note{font-size:12px;color:#737373}.law-chat-form{display:grid;gap:13px}.law-chat-form label{display:grid;gap:6px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.035em}.law-chat-form input,.law-chat-form select,.law-chat-form textarea{width:100%;border:1px solid #d6d6d1;background:#fff;padding:11px 12px;font:inherit;font-size:14px;text-transform:none;letter-spacing:0}.law-chat-consent{grid-template-columns:auto 1fr!important;align-items:start;text-transform:none!important;font-weight:500!important;letter-spacing:0!important}.law-chat-consent input{width:auto;margin-top:3px}.law-chat-send{width:100%;box-shadow:none}.law-chat-call{text-align:center;font-size:13px;font-weight:800;text-decoration:underline}@media(max-width:640px){.law-chat{right:12px;bottom:12px}.law-chat-panel{position:fixed;left:14px;right:14px;bottom:72px;width:auto}.law-chat-toggle{padding:14px 17px}}
+
+
+/* 2026-10-01: более сдержанная типографика для ноутбуков и телефонов */
+.hero h1{
+  font-size:clamp(48px,5.6vw,82px);
+  line-height:1.02;
+}
+.section-head h2{
+  font-size:clamp(34px,4.25vw,58px);
+  line-height:1.05;
+}
+.article h2{
+  font-size:clamp(30px,3.5vw,44px);
+  line-height:1.1;
+}
+.cta h2,
+.contact h2{
+  font-size:clamp(36px,4.2vw,56px);
+  line-height:1.05;
+}
+.bitter-hero h1{
+  font-size:clamp(48px,6.2vw,88px);
+  line-height:.98;
+}
+
+@media(max-width:620px){
+  .hero h1{
+    font-size:34px;
+    line-height:1.06;
+  }
+  .section-head h2{
+    font-size:32px;
+    line-height:1.08;
+  }
+  .article h2{
+    font-size:28px;
+    line-height:1.12;
+  }
+  .cta h2,
+  .contact h2{
+    font-size:32px;
+    line-height:1.08;
+  }
+  .bitter-hero h1{
+    font-size:38px;
+    line-height:1.03;
+  }
+}
+
+@media(max-width:430px){
+  .hero h1{
+    font-size:32px;
+  }
+  .section-head h2{
+    font-size:30px;
+  }
+  .cta h2,
+  .contact h2{
+    font-size:30px;
+  }
+  .bitter-hero h1{
+    font-size:36px;
+  }
+}
+
+
+/* Visual polish 2026-10-02 */
+:root{
+  --shadow-soft:0 14px 38px rgba(17,17,17,.07);
+  --radius-card:18px;
+}
+
+/* Более спокойная иерархия первого экрана */
+.topbar .container{min-height:30px}
+.nav{min-height:84px}
+.logo img{height:64px}
+.hero .container{
+  min-height:590px;
+  grid-template-columns:1.16fr .84fr;
+  gap:56px;
+  padding-top:46px;
+  padding-bottom:54px;
+}
+.hero h1{
+  max-width:900px;
+  margin:16px 0 22px;
+  font-size:clamp(48px,5.7vw,80px);
+  line-height:1.03;
+  letter-spacing:.008em;
+}
+.kicker{
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.visual{min-height:370px}
+.visual:before{width:min(330px,74%)}
+.visual img{width:min(270px,64%)}
+.seal{
+  width:108px;
+  height:108px;
+  right:3%;
+  top:9%;
+  font-size:8px;
+}
+.visual:after{width:96px;height:13px;right:11%;bottom:19%}
+
+/* Единый ритм секций */
+section{padding:88px 0}
+.section-head{margin-bottom:42px}
+.section-head h2{
+  font-size:clamp(36px,4.7vw,64px);
+  line-height:1.04;
+}
+
+/* Карточки: визуально кликабельные, но без ярмарки теней */
+.grid{
+  gap:24px;
+  border-top:0;
+}
+.grid .card:nth-child(n){
+  min-height:250px;
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:var(--radius-card);
+  background:#fff;
+}
+.grid .card:before{display:none}
+.grid .card:hover{
+  background:#fff;
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-soft);
+  border-color:#cfcfca;
+}
+.grid .card h3{margin-top:18px}
+.grid .bitter-card{
+  background:#181818;
+  color:#fff;
+  border-color:#303030;
+}
+.grid .bitter-card:hover{background:#202020;border-color:#404040}
+.grid .bitter-card h3{color:#fff}
+.grid .bitter-card p{color:#bdbdb8}
+.accent-panel .grid .card{
+  background:rgba(255,255,255,.20);
+  border-color:rgba(17,17,17,.28);
+}
+.accent-panel .grid .card:hover{background:rgba(255,255,255,.32)}
+.dark-panel .grid .card{
+  background:#202020;
+  border-color:#383838;
+}
+.dark-panel .grid .card:hover{background:#252525;border-color:#4a4a4a}
+
+/* Срочные карточки */
+.urgent-grid{
+  gap:16px;
+  background:transparent;
+  border:0;
+}
+.urgent-card{
+  border:1px solid var(--line);
+  border-radius:16px;
+  min-height:180px;
+}
+.urgent-card:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-soft);
+}
+
+/* Длинные статьи: уже строка, больше воздуха */
+.article{max-width:760px}
+.article p,.article li{
+  font-size:16px;
+  line-height:1.8;
+}
+.article h2{
+  margin-top:58px;
+  font-size:clamp(32px,3.8vw,46px);
+  line-height:1.08;
+}
+.article h3{margin-top:36px}
+
+/* Оглавление длинной страницы */
+.toc{
+  position:sticky;
+  top:96px;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow-x:auto;
+  margin:26px 0 38px;
+  padding:10px 12px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.96);
+  box-shadow:0 8px 22px rgba(17,17,17,.05);
+  backdrop-filter:blur(12px);
+  scrollbar-width:none;
+}
+.toc::-webkit-scrollbar{display:none}
+.toc strong{
+  flex:0 0 auto;
+  padding:0 9px;
+  font-size:10px;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  color:#777;
+}
+.toc a{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 11px;
+  border-radius:999px;
+  background:#f1f1ee;
+  color:#111;
+  font-size:11px;
+  font-weight:700;
+}
+.toc a:hover{background:var(--accent-soft);color:#111}
+
+/* Более аккуратные сервисные панели */
+.service-tools{gap:20px;margin-bottom:34px}
+.quick-nav,.checklist{
+  border:1px solid var(--line);
+  border-radius:16px;
+  background:#f7f7f4;
+}
+.quick-nav a{transition:padding-left .18s ease,color .18s ease}
+.quick-nav a:hover{padding-left:5px}
+
+/* CTA и кнопки */
+.btn,.phone{box-shadow:none}
+.btn:hover,.phone:hover{box-shadow:0 8px 20px rgba(17,17,17,.10)}
+.cta{padding:72px 0}
+.cta h2{font-size:clamp(38px,4.6vw,60px)}
+
+/* Компактный подвал: авторство и примечание */
+footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spacing:0}
+.footer-legal{
+  display:flex;
+  justify-content:space-between;
+  gap:24px;
+  padding-top:18px;
+  padding-bottom:26px;
+  border-top:1px solid #262626;
+  color:#777;
+  font-size:10px;
+  line-height:1.5;
+  text-transform:uppercase;
+  letter-spacing:.04em;
+}
+
+/* Активный раздел в основном меню */
+.section-criminal .menu a[href="/ugolovnyj-advokat-krasnodar"]:after,
+.section-civil .menu a[href="/grazhdanskij-advokat-krasnodar"]:after,
+.section-arbitration .menu a[href="/arbitrazhnyj-advokat-krasnodar"]:after,
+.section-appeal .menu a[href="/apellyaciya-kassaciya"]:after{right:0}
+
+/* Мобильное меню без JavaScript */
+.mobile-nav{display:none}
+@media(max-width:680px){
+  .topbar .container{min-height:27px}
+  .nav{
+    min-height:72px;
+    flex-wrap:wrap;
+    padding-top:8px;
+    padding-bottom:8px;
+  }
+  .logo img{height:50px}
+  .menu{display:none}
+  .phone{display:inline-flex;font-size:9px}
+  .mobile-nav{
+    display:block;
+    flex:0 0 100%;
+    order:3;
+    border-top:1px solid var(--line);
+  }
+  .mobile-nav summary{
+    position:relative;
+    cursor:pointer;
+    list-style:none;
+    padding:11px 26px 5px 0;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.07em;
+    text-transform:uppercase;
+  }
+  .mobile-nav summary::-webkit-details-marker{display:none}
+  .mobile-nav summary:after{
+    content:"+";
+    position:absolute;
+    right:2px;
+    top:7px;
+    color:var(--accent);
+    font-size:20px;
+    font-weight:500;
+  }
+  .mobile-nav[open] summary:after{content:"−"}
+  .mobile-nav-panel{
+    display:grid;
+    gap:0;
+    padding:5px 0 8px;
+  }
+  .mobile-nav-panel a{
+    padding:9px 0;
+    border-top:1px solid #ecece7;
+    font-size:11px;
+    font-weight:700;
+  }
+  .hero .container{
+    min-height:auto;
+    padding-top:46px;
+    padding-bottom:48px;
+  }
+  .hero h1{
+    font-size:clamp(37px,11.5vw,46px);
+    line-height:1.04;
+    margin-top:12px;
+    margin-bottom:18px;
+  }
+  .lead{font-size:15.5px;line-height:1.65}
+  section{padding:58px 0}
+  .section-head{margin-bottom:32px}
+  .section-head h2{font-size:36px}
+  .grid{gap:14px}
+  .grid .card:nth-child(n){
+    min-height:auto;
+    padding:24px;
+    border-radius:14px;
+  }
+  .urgent-grid{gap:12px}
+  .article{max-width:100%}
+  .article p,.article li{font-size:15.5px;line-height:1.76}
+  .article h2{font-size:31px;margin-top:48px}
+  .toc{
+    top:76px;
+    margin:20px -2px 30px;
+    border-radius:12px;
+  }
+  .service-tools{gap:12px}
+  .quick-nav,.checklist{border-radius:14px}
+  .cta{padding:54px 0}
+  .cta h2{font-size:36px}
+  .footer-legal{
+    display:block;
+    padding-top:16px;
+    padding-bottom:22px;
+  }
+  .footer-legal span{display:block;margin:5px 0}
+}
+
+@media(min-width:681px) and (max-width:1180px){
+  .hero h1{font-size:clamp(46px,6vw,68px)}
+  .grid{gap:18px}
+  .grid .card:nth-child(n){padding:26px}
+}
+
+
+/* Knowledge portal layer 2026-10-02 */
+.situation-section{background:#fff}
+.situation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.situation-card{position:relative;display:block;min-height:220px;padding:28px;border:1px solid var(--line);border-radius:18px;background:#fff;transition:.2s ease}
+.situation-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-soft);border-color:#c8c8c2}
+.situation-mark{display:inline-grid;place-items:center;width:42px;height:42px;border-radius:50%;background:var(--accent);font-size:11px;font-weight:900}
+.situation-card h3{margin:42px 0 10px;font-size:25px;line-height:1.14}
+.situation-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.plain-law{background:#151515;color:#fff}
+.plain-law .section-head .kicker{color:var(--accent)}
+.plain-law .section-head p{color:#b7b7b2}
+.plain-law-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#353535;border:1px solid #353535}
+.plain-law-grid a{display:block;min-height:220px;padding:30px;background:#1c1c1c;transition:.18s ease}
+.plain-law-grid a:hover{background:#242424}
+.plain-law-grid span{color:var(--accent);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.plain-law-grid h3{margin:24px 0 10px;font-size:26px;line-height:1.14;color:#fff}
+.plain-law-grid p{margin:0;color:#b7b7b2;font-size:14px;line-height:1.6}
+
+.article-meta{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px}
+.article-meta span{display:inline-flex;align-items:center;min-height:32px;padding:0 11px;border-radius:999px;background:#f1f1ee;color:#4d4d49;font-size:10px;font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+.article-meta .fresh{background:var(--accent-soft);color:#753500}
+.brief-box{margin:0 0 30px;padding:24px 26px;border:1px solid var(--line);border-radius:16px;background:#f8f8f5}
+.brief-box strong{display:block;margin-bottom:8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#777}
+.brief-box p{margin:0!important;color:#242422!important;font-size:15px!important;line-height:1.65!important}
+
+.process-line{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin:34px 0 44px;border-top:2px solid #111}
+.process-step{position:relative;padding:24px 18px 0 0}
+.process-step:before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 5px #fff}
+.process-step b{display:block;margin-bottom:7px;font-size:13px}
+.process-step span{display:block;color:#777;font-size:12px;line-height:1.45}
+
+.materials-toolbar{margin:0 0 34px;padding:22px;border:1px solid var(--line);border-radius:16px;background:#f7f7f4}
+.materials-search{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.materials-search label{font-size:11px;font-weight:800;letter-spacing:.055em;text-transform:uppercase}
+.materials-search input{width:100%;min-height:44px;padding:0 14px;border:1px solid #d4d4cf;border-radius:10px;background:#fff;font:inherit;font-size:14px}
+.filter-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.filter-chips button{min-height:34px;padding:0 12px;border:1px solid #d6d6d1;border-radius:999px;background:#fff;color:#333;cursor:pointer;font:inherit;font-size:10px;font-weight:800;letter-spacing:.035em;text-transform:uppercase}
+.filter-chips button:hover,.filter-chips button.is-active{background:var(--accent);border-color:var(--accent);color:#111}
+#materials-grid .card[hidden]{display:none}
+
+.memo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:42px}
+.memo-card{display:block;padding:24px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.18s ease}
+.memo-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft)}
+.memo-card span{color:var(--accent);font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.memo-card h3{margin:20px 0 9px;font-size:21px;line-height:1.15}
+.memo-card p{margin:0;color:#777;font-size:13px;line-height:1.55}
+
+.reading-progress{position:fixed;z-index:10000;left:0;top:0;width:100%;height:3px;background:transparent;pointer-events:none}
+.reading-progress span{display:block;width:0;height:100%;background:var(--accent);transition:width .08s linear}
+.print-actions{display:flex;gap:10px;margin:28px 0}
+.memo-page .checklist-print{margin:24px 0;padding:0;list-style:none;counter-reset:memo}
+.memo-page .checklist-print li{position:relative;margin:0;padding:18px 0 18px 52px;border-bottom:1px solid var(--line);counter-increment:memo}
+.memo-page .checklist-print li:before{content:counter(memo,decimal-leading-zero);position:absolute;left:0;top:18px;color:var(--accent);font-size:11px;font-weight:900;letter-spacing:.06em}
+.memo-note{margin:28px 0;padding:22px;border-left:4px solid var(--accent);background:var(--accent-soft)}
+
+@media(max-width:980px){
+  .situation-grid{grid-template-columns:1fr 1fr}
+  .memo-grid{grid-template-columns:1fr 1fr}
+  .process-line{grid-template-columns:1fr;border-top:0;border-left:2px solid #111;margin-left:7px}
+  .process-step{padding:0 0 24px 26px}
+  .process-step:before{top:2px;left:-7px}
+}
+@media(max-width:620px){
+  .situation-grid,.plain-law-grid,.memo-grid{grid-template-columns:1fr}
+  .situation-card{min-height:auto;padding:22px}
+  .situation-card h3{margin-top:28px}
+  .plain-law-grid a{min-height:auto;padding:24px}
+  .materials-search{grid-template-columns:1fr;gap:8px}
+  .materials-toolbar{padding:16px}
+}
+@media print{
+  header,.topbar,.cta,.contact,footer,.law-chat,.mobile-nav,.print-actions,.reading-progress{display:none!important}
+  body{background:#fff;color:#000}
+  .memo-page{max-width:none!important}
+  .memo-page h1,.memo-page h2,.memo-page h3{color:#000}
+  .memo-page p,.memo-page li{color:#111!important}
+  section{padding:18px 0!important}
+}
+
+
+/* Legal iconography and practice cards */
+.direction-icon{width:38px;height:38px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:#111;display:block}
+.situation-card .direction-icon{position:absolute;right:24px;top:24px;color:#8b8b85;opacity:.9}
+.card-icon{margin-bottom:14px;color:#6e6e68}
+.bitter-card .card-icon{color:var(--accent)}
+.practice-card{position:relative;overflow:hidden;background:#fbfbf8!important;border-color:#cacac4!important}
+.practice-card:after{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--accent)}
+.practice-card .num{color:#7a3b00!important}
+.practice-card p:before{content:"Ключевой вывод";display:block;margin-bottom:7px;color:#8b8b85;font-size:9px;font-weight:900;letter-spacing:.075em;text-transform:uppercase}
+.practice-card:hover{background:#fffdf8!important}
+@media(max-width:620px){.situation-card .direction-icon{right:18px;top:18px;width:34px;height:34px}.card-icon{width:34px;height:34px}}
+
+
+/* Signature icons and practice cards */
+.practice-icon{display:grid;place-items:center;width:52px;height:52px;margin-bottom:22px;border:1px solid #deded8;border-radius:14px;background:#fafaf7}
+.practice-icon svg{width:28px;height:28px;fill:none;stroke:var(--accent);stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+.dark-panel .practice-icon,.bitter-card .practice-icon{background:#222;border-color:#3a3a3a}
+.practice-featured-head{margin-top:46px}
+.practice-featured{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 44px}
+.practice-case{display:block;padding:26px;border:1px solid var(--line);border-radius:16px;background:#fff;transition:.18s ease}
+.practice-case:hover{transform:translateY(-2px);box-shadow:var(--shadow-soft);border-color:#c9c9c3}
+.practice-case-meta{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:28px}
+.practice-case-meta span{color:var(--accent);font-size:10px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+.practice-case-meta time{color:#777;font-size:11px;font-weight:700}
+.practice-case h3{margin:0 0 10px;font-size:24px;line-height:1.14}
+.practice-case p{margin:0 0 22px;color:#73736f;font-size:13.5px;line-height:1.6}
+.practice-case b{font-size:11px;letter-spacing:.04em;text-transform:uppercase}
+@media(max-width:680px){.practice-featured{grid-template-columns:1fr}.practice-icon{width:46px;height:46px}.practice-icon svg{width:25px;height:25px}}
+
+
+/* Boutique legal final layer 2026-10-02 */
+:root{
+  --shadow-soft:none;
+  --radius-card:0;
+}
+
+/* Строже, ближе к редакционной сетке ведущих юрфирм */
+.btn,.phone{
+  border-radius:2px;
+}
+.btn:hover,.phone:hover{
+  box-shadow:none;
+  transform:none;
+}
+
+/* Карточки практик — без SaaS-скруглений и теней */
+.grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.grid .card:nth-child(n){
+  min-height:258px;
+  padding:34px 28px 36px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.grid .card:nth-child(3n+2),
+.grid .card:nth-child(3n){
+  padding-left:28px;
+}
+.grid .card:nth-child(3n){
+  border-right:0;
+}
+.grid .card:before{
+  display:block;
+}
+.grid .card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.grid .bitter-card,
+.grid .bitter-card:hover{
+  background:#171717;
+  border-color:#333;
+}
+.grid .card h3{
+  margin-top:24px;
+  font-size:26px;
+  letter-spacing:-.012em;
+}
+.grid .card p{
+  max-width:34em;
+}
+
+/* Навигатор жизненных ситуаций — функциональные иконки, без декоративного шума */
+.situation-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.situation-card{
+  min-height:224px;
+  padding:30px 30px 32px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.situation-card:nth-child(3n+2),
+.situation-card:nth-child(3n){
+  padding-left:30px;
+}
+.situation-card:nth-child(3n){
+  border-right:0;
+}
+.situation-card:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.situation-mark{
+  display:block;
+  width:auto;
+  height:auto;
+  border-radius:0;
+  background:none;
+  color:var(--accent);
+  font-size:10px;
+  font-weight:900;
+  letter-spacing:.08em;
+}
+.situation-card h3{
+  margin:58px 0 11px;
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.situation-card .direction-icon{
+  right:28px;
+  top:28px;
+  width:32px;
+  height:32px;
+  color:#777;
+  stroke-width:1.55;
+}
+
+/* Блок "Право без юридического тумана" — как журнальная полоса */
+.plain-law-grid{
+  border:0;
+  border-top:1px solid #3b3b3b;
+  gap:0;
+}
+.plain-law-grid a{
+  min-height:236px;
+  padding:34px 34px 34px 0;
+  border-right:1px solid #3b3b3b;
+  border-bottom:1px solid #3b3b3b;
+  background:#151515;
+}
+.plain-law-grid a:nth-child(2n){
+  padding-left:34px;
+  border-right:0;
+}
+.plain-law-grid a:hover{
+  background:#1b1b1b;
+}
+.plain-law-grid h3{
+  font-size:29px;
+  letter-spacing:-.015em;
+}
+
+/* Судебная практика — редакционная витрина */
+.practice-featured{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.practice-case{
+  padding:32px 30px 34px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+  transform:none;
+}
+.practice-case:nth-child(2n){
+  padding-left:30px;
+  border-right:0;
+}
+.practice-case:hover{
+  background:#fafaf8;
+  border-color:var(--line);
+  box-shadow:none;
+  transform:none;
+}
+.practice-case h3{
+  font-size:27px;
+  letter-spacing:-.015em;
+}
+.practice-case b{
+  border-bottom:1px solid #111;
+  padding-bottom:2px;
+}
+
+/* Сервисные элементы: меньше "приложения", больше редакционного интерфейса */
+.materials-toolbar,
+.quick-nav,
+.checklist,
+.brief-box,
+.memo-card{
+  border-radius:0;
+  box-shadow:none;
+}
+.materials-toolbar{
+  background:#f7f7f4;
+}
+.materials-search input{
+  border-radius:0;
+}
+.brief-box{
+  border:0;
+  border-left:3px solid var(--accent);
+  background:#f7f7f4;
+}
+.memo-grid{
+  gap:0;
+  border-top:1px solid var(--line);
+}
+.memo-card{
+  padding:28px 24px 30px 0;
+  border:0;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:transparent;
+  transform:none;
+}
+.memo-card:nth-child(4n+2),
+.memo-card:nth-child(4n+3),
+.memo-card:nth-child(4n){
+  padding-left:24px;
+}
+.memo-card:nth-child(4n){
+  border-right:0;
+}
+.memo-card:hover{
+  background:#fafaf8;
+  box-shadow:none;
+  transform:none;
+}
+
+/* Оглавление остаётся функциональным, но визуально спокойнее */
+.toc{
+  border-radius:2px;
+  box-shadow:none;
+}
+.toc a{
+  border-radius:2px;
+}
+
+/* Ненужная декоративная иконография карточек практик скрыта на случай старой разметки */
+.card-icon,
+.practice-icon{
+  display:none!important;
+}
+
+@media(max-width:980px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    border-right:0;
+    padding-left:0;
+    padding-right:0;
+  }
+  .grid .card:nth-child(3n+2),
+  .grid .card:nth-child(3n),
+  .situation-card:nth-child(3n+2),
+  .situation-card:nth-child(3n){
+    padding-left:0;
+  }
+  .plain-law-grid a,
+  .plain-law-grid a:nth-child(2n),
+  .practice-case,
+  .practice-case:nth-child(2n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+  .memo-card,
+  .memo-card:nth-child(4n+2),
+  .memo-card:nth-child(4n+3),
+  .memo-card:nth-child(4n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+}
+
+@media(max-width:620px){
+  .grid .card:nth-child(n),
+  .situation-card{
+    min-height:auto;
+    padding-top:26px;
+    padding-bottom:28px;
+    border-radius:0;
+  }
+  .situation-card h3{
+    margin-top:46px;
+  }
+  .practice-case{
+    padding-top:26px;
+    padding-bottom:28px;
+  }
+}
+
+
+/* Scroll reveal 2026-10-02 — restrained boutique motion */
+.motion-ready .reveal-up{
+  --reveal-distance:12px;
+  opacity:1;
+  transform:none;
+}
+.motion-ready .reveal-up.is-visible{
+  animation:reveal-up 440ms cubic-bezier(.2,.7,.2,1) var(--reveal-delay,0ms) backwards;
+  opacity:1;
+  transform:none;
+}
+@keyframes reveal-up{
+  from{opacity:.94;transform:translate3d(0,var(--reveal-distance,12px),0)}
+  to{opacity:1;transform:none}
+}
+/* Density guardrails: one accent, more air, less simultaneous noise */
+.section-head p,.lead{max-width:720px}
+.article p,.article li{max-width:72ch}
+.grid .card p,.situation-card p,.plain-law-grid p,.practice-case p{max-width:34em}
+.article-meta{gap:7px}
+.filter-chips{row-gap:7px}
+main > section:not(.hero){overflow:clip}
+@media(max-width:800px){
+  .seal,.visual:after{display:none}
+  .visual:before{opacity:.82}
+}
+@media(max-width:680px){
+  .motion-ready .reveal-up{
+    --reveal-distance:8px;
+  }
+  .motion-ready .reveal-up.is-visible{
+    animation-duration:360ms;
+  }
+  .section-head p,.lead,.article p,.article li{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .motion-ready .reveal-up,
+  .motion-ready .reveal-up.is-visible{
+    opacity:1!important;
+    transform:none!important;
+    transition:none!important;
+    animation:none!important;
+  }
+}
+
+
+/* Bitter card mobile contrast fix 2026-10-02 */
+.grid .bitter-card,
+.grid .bitter-card:hover{
+  background:#171717!important;
+  color:#fff!important;
+}
+.grid .bitter-card h3,
+.grid .bitter-card .more{color:#fff!important}
+.grid .bitter-card p{color:#bdbdb8!important}
+.grid .bitter-card .num{color:var(--accent)!important}
+
+
+/* Mobile nav dedupe hotfix 2026-10-02 */
+@media(max-width:680px){
+  .mobile-nav{display:none!important}
+  .menu{
+    display:flex!important;
+    order:3;
+    flex:0 0 100%;
+    width:100%;
+    max-width:100%;
+    justify-content:flex-start;
+    align-items:center;
+    gap:15px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    padding:10px 0 11px;
+    margin:0;
+    border-top:1px solid var(--line);
+    font-size:9.5px;
+    letter-spacing:.035em;
+    white-space:nowrap;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  .menu::-webkit-scrollbar{display:none}
+}
+
+/* 2026-10-03: remove stacked whitespace, preserve the editorial design. */
+main > section.hero{padding:0}
+.hero .container{min-height:0;padding-top:38px;padding-bottom:42px}
+main > section:not(.hero){padding-top:56px;padding-bottom:56px}
+.section-head{margin-bottom:28px}
+.section-head > h2:first-child,.article > h2:first-child{margin-top:0}
+.grid .card:nth-child(n){min-height:0}
+@media(max-width:680px){
+  .hero .container{padding-top:28px;padding-bottom:30px}
+  main > section:not(.hero){padding-top:36px;padding-bottom:36px}
+  .section-head{margin-bottom:22px}
+  .situation-card h3{margin-top:26px}
+}
+
+/* Existing reference section: sibling topics inside each court. */
+.reference-intro h1{font-size:clamp(30px,4vw,52px);line-height:1.12;max-width:960px;margin:14px 0 20px}
+.reference-intro p{max-width:760px}
+.reference-nav,.court-picker{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 0}
+.reference-nav a,.court-picker a{display:block;padding:12px 15px;border:1px solid var(--line);font-size:14px;line-height:1.4}
+.reference-nav a:hover,.court-picker a:hover{border-color:var(--accent)}
+.reference-nav a[aria-current=page]{border-bottom:3px solid var(--accent)}
+.court-picker a[aria-selected=true]{border-bottom:3px solid var(--accent);font-weight:700}
+.court-entry[hidden]{display:none}
+.reference-page main > .reference-intro{padding-bottom:24px}
+.reference-page .reference-intro + section{padding-top:24px}
+.reference-content{max-width:1120px}
+.court-entry{margin:0 0 42px;scroll-margin-top:150px}
+.court-entry h2{font-size:clamp(25px,3vw,36px);line-height:1.18;margin:0 0 12px}
+.reference-address{color:var(--muted);margin:0 0 20px}
+.reference-topic{border-top:1px solid var(--line)}
+.reference-topic:last-of-type{border-bottom:1px solid var(--line)}
+.reference-topic summary{cursor:pointer;padding:17px 4px;font-size:17px;font-weight:700;line-height:1.4}
+.reference-topic summary:hover{color:#a94300}
+.reference-body{padding:0 4px 22px;line-height:1.65}
+.reference-body p{margin:12px 0;max-width:82ch}
+.reference-body a{text-decoration:underline;text-underline-offset:3px}
+.reference-body ul{padding-left:22px}
+.reference-body li{margin:8px 0}
+.reference-table-wrap{width:100%;overflow-x:auto;margin:18px 0}
+.reference-table{width:100%;border-collapse:collapse;font-size:14px;text-align:left}
+.reference-table th,.reference-table td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}
+.reference-table th{background:#f6f6f3;font-weight:700}
+.reference-table td:first-child{min-width:140px}
+.fee-form{display:flex;align-items:end;flex-wrap:wrap;gap:14px;padding:20px 0}
+.fee-form label{display:grid;gap:8px;font-weight:700;flex:1;min-width:180px}
+.fee-form input{width:100%;padding:13px;font:inherit;border:1px solid #999;background:#fff;color:#111}
+.fee-form output{flex-basis:100%;font-size:19px;font-weight:700;padding:10px 0}
+.reference-page .reference-topic :focus-visible,.reference-page a:focus-visible{outline:2px solid #aa4400;outline-offset:4px}
+@media(max-width:680px){.reference-nav a,.court-picker a{font-size:13px;padding:10px 12px}.reference-table th,.reference-table td{padding:9px 6px}.reference-table{font-size:13px}.court-entry{scroll-margin-top:165px;margin-bottom:32px}.fee-form .btn{width:100%}}
+@media print{.reference-topic>div{display:block!important}.reference-nav,.court-picker,.fee-form button{display:none}}
+@media print{.court-entry[hidden]{display:block!important}}
+.agency-grid .card h2{font-size:24px;line-height:1.2;margin:0 0 18px;text-transform:none}
+.agency-grid .card p{overflow-wrap:anywhere}
+.agency-grid .card a{text-decoration:underline;text-underline-offset:3px}
+.judge-list{columns:2;column-gap:30px}
+.judge-list li{break-inside:avoid}
+@media(max-width:680px){.judge-list{columns:1}}
+
+
+/* Homepage hierarchy refinement 2026-10-03 */
+.home-page .home-intro{
+  padding:64px 0 72px;
+  border-bottom:1px solid var(--line);
+  background:#fff;
+}
+.home-page .home-intro .section-head{
+  max-width:1040px;
+  margin-bottom:30px;
+}
+.home-page .home-intro h1{
+  max-width:1050px;
+  margin:12px 0 22px;
+  font-size:clamp(48px,6vw,86px);
+  line-height:1.01;
+  font-weight:800;
+  letter-spacing:-.025em;
+  text-transform:uppercase;
+}
+.home-page .home-intro .section-head p{
+  max-width:790px;
+  font-size:18px;
+  line-height:1.65;
+}
+.home-intro-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:4px}
+.home-meta{
+  margin:22px 0 0;
+  padding-top:20px;
+  border-top:1px solid var(--line);
+  color:#666;
+  font-size:13px;
+  letter-spacing:.01em;
+}
+.home-page main > section:not(.home-intro){
+  padding-top:68px;
+  padding-bottom:68px;
+}
+.home-page main > section:not(.home-intro):not(.plain-law):not(.dark-panel):not(.accent-panel):not(.contact){
+  border-top:1px solid #ecece7;
+}
+.home-page .section-head{margin-bottom:36px}
+.home-page .section-head .kicker{margin-bottom:13px}
+.home-page .section-head h2{margin-top:0;margin-bottom:18px}
+.home-page .section-actions{
+  margin-top:34px;
+  padding-top:22px;
+  border-top:1px solid var(--line);
+}
+.home-page .section-more{
+  display:inline-block;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  border-bottom:1px solid currentColor;
+}
+.home-page .contact-simple{max-width:900px;margin:0 auto}
+.home-page .contact-note{
+  max-width:700px;
+  margin:28px 0 0;
+  color:#8d8d8a;
+  font-size:13px;
+  line-height:1.65;
+}
+.home-page .home-reference{scroll-margin-top:130px}
+@media(max-width:680px){
+  .home-page .home-intro{padding:42px 0 48px}
+  .home-page .home-intro .section-head{margin-bottom:24px}
+  .home-page .home-intro h1{
+    font-size:clamp(38px,10.7vw,48px);
+    line-height:1.04;
+    letter-spacing:-.02em;
+  }
+  .home-page .home-intro .section-head p{font-size:16px;line-height:1.68}
+  .home-page main > section:not(.home-intro){padding-top:46px;padding-bottom:46px}
+  .home-page .section-head{margin-bottom:28px}
+  .home-page .section-head .kicker{margin-bottom:11px}
+  .home-page .section-head h2{margin-bottom:16px}
+  .home-page .law-chat{right:10px;bottom:10px}
+  .home-page .law-chat-toggle{
+    padding:12px 15px;
+    font-size:12.5px;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
+  }
+  .home-meta{font-size:12px;line-height:1.55}
+}
+
+
+/* Homepage dedupe pass 2026-10-03 */
+.home-page .home-practice-grid,
+.home-page .home-current-grid{
+  grid-template-columns:repeat(2,1fr);
+}
+.home-page .home-practice-grid .card:nth-child(n),
+.home-page .home-current-grid .card:nth-child(n){
+  padding-left:28px;
+  padding-right:28px;
+  border-right:1px solid var(--line);
+}
+.home-page .home-practice-grid .card:nth-child(odd),
+.home-page .home-current-grid .card:nth-child(odd){
+  padding-left:0;
+}
+.home-page .home-practice-grid .card:nth-child(even),
+.home-page .home-current-grid .card:nth-child(even){
+  border-right:0;
+}
+.home-page .accent-panel .home-current-grid .card{
+  border-color:rgba(17,17,17,.28);
+}
+@media(max-width:680px){
+  .home-page .home-practice-grid,
+  .home-page .home-current-grid{
+    grid-template-columns:1fr;
+  }
+  .home-page .home-practice-grid .card:nth-child(n),
+  .home-page .home-current-grid .card:nth-child(n){
+    padding-left:0;
+    padding-right:0;
+    border-right:0;
+  }
+}
+
+/* Keep long homepage headings inside the mobile viewport */
+@media(max-width:680px){
+  .home-page .accent-panel .section-head h2{
+    font-size:clamp(34px,9.2vw,44px);
+    line-height:1.03;
+    letter-spacing:-.025em;
+    overflow-wrap:anywhere;
+  }
+}
+
+/* Expanded court-fee calculator 2026-10-05 */
+.fee-advanced-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:24px 0}
+.fee-advanced-form label{display:grid;gap:8px;font-size:12px;font-weight:800}
+.fee-advanced-form select,.fee-advanced-form input{width:100%;min-height:48px;border:1px solid var(--line);background:#fff;padding:11px 12px;font:inherit}
+.fee-advanced-form .btn{align-self:end}
+.fee-advanced-form output{display:flex;align-items:center;min-height:48px;padding:12px 14px;border:1px solid var(--line);background:#f7f7f4;font-weight:800}
+@media(max-width:680px){.fee-advanced-form{grid-template-columns:1fr}.fee-advanced-form .btn,.fee-advanced-form output{width:100%}}
+
+
+/* Mobile heading wrap fix 2026-10-07: avoid orphaned single-letter line */
+@media(max-width:680px){
+  .home-page .accent-panel .section-head h2{
+    font-size:clamp(30px,8.35vw,40px);
+    line-height:1.04;
+    letter-spacing:-.028em;
+    overflow-wrap:normal;
+    word-break:normal;
+    hyphens:auto;
+  }
+}
+
+
+/* Context links and appointment information, 2026-10-09. */
+.home-page .service-links{font-size:14px;line-height:1.7;margin:0 0 18px}
+.home-page .service-links a,.appointment-info a,.related-help a{text-decoration:underline;text-underline-offset:3px}
+.appointment-info{max-width:700px;margin-top:28px}
+.appointment-info h3{font-size:19px;line-height:1.4;margin:24px 0 10px;color:#fff}
+.appointment-info p{font-size:15px;line-height:1.7;color:#c9c9c5}
+.appointment-info .map-link{display:inline-block;color:#fff;max-width:100%;overflow-wrap:break-word}
+.related-help{border-top:1px solid var(--line)}
+@media(max-width:680px){.appointment-info h3{font-size:18px}.appointment-info p{font-size:15px}.home-page .service-links{font-size:14px}}
+
+/* Compact mobile chat and readable practical guides, 2026-10-09. */
+.law-chat-icon{display:none}
+.citizen-guide .hero .container{display:block}
+.citizen-guide .hero h1{max-width:1000px;overflow-wrap:break-word}
+.guide-sources a{overflow-wrap:anywhere}
+#citizen-guides{scroll-margin-top:130px;margin-top:12px}
+#citizen-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){
+ .law-chat,.home-page .law-chat{right:12px;bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+ .law-chat .law-chat-toggle,.home-page .law-chat .law-chat-toggle{width:48px;height:48px;min-width:48px;padding:12px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+ .law-chat-icon{display:block;flex:none}.law-chat-label{display:none}
+ .law-chat-at-contacts .law-chat-toggle[aria-expanded="false"]{display:none}
+ .law-chat-panel{bottom:calc(72px + env(safe-area-inset-bottom,0px));max-height:calc(100dvh - 100px);width:auto}
+ .citizen-guide .hero h1{font-size:clamp(29px,8vw,40px);line-height:1.12;hyphens:auto}
+ .citizen-guide .article h2{font-size:26px;line-height:1.2;overflow-wrap:break-word}
+}
+
+/* Citizen topic catalogue, 2026-10-09. */
+.citizen-topic-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.citizen-topic-grid .memo-card{min-width:0}
+.citizen-topic-grid h3{overflow-wrap:break-word}
+@media(max-width:680px){.citizen-topic-grid{grid-template-columns:1fr}}
+
+/* Keep the new guide headings below the fixed header and sticky contents. */
+.citizen-guide .article h2[id],#obmen-tovara,#nekachestvennaya-usluga-remont{scroll-margin-top:180px}
+#business-guides{scroll-margin-top:130px;margin-top:42px}
+#business-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){.citizen-guide .article h2[id],#obmen-tovara,#nekachestvennaya-usluga-remont{scroll-margin-top:160px}}
+
+/* Criminal comparisons: clear the sticky contents when following topic links. */
+#vzyatka-ili-moshennichestvo,#hranenie-ili-pokushenie-na-sbyt,#prisvoenie-ili-krazha,#razgranichenie,#pdd{scroll-margin-top:180px}
+#criminal-guides{scroll-margin-top:130px;margin-top:42px}
+#criminal-guides+.memo-grid{margin-bottom:44px}
+@media(max-width:680px){#vzyatka-ili-moshennichestvo,#hranenie-ili-pokushenie-na-sbyt,#prisvoenie-ili-krazha,#razgranichenie,#pdd{scroll-margin-top:160px}}
+
+/* Contact anchor: keep the section heading below the sticky navigation. */
+#contacts{scroll-margin-top:140px}
+
+/* Allow longer navigation rows to fit tablets without overlapping the logo. */
+@media(min-width:681px){
+  header .menu{flex-wrap:wrap;row-gap:0}
+}
+</style><style>.penalty-page{max-width:1040px;padding-top:48px;padding-bottom:64px}.penalty-page h1{font-size:clamp(32px,5vw,56px);line-height:1.08;margin:16px 0 24px;max-width:850px}.penalty-page .lead{font-size:21px;max-width:800px;color:#555}.notice{border-left:4px solid var(--accent);background:var(--surface-soft);padding:20px;margin:28px 0}.form-head,.period-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}.penalty-page label{min-width:0;display:flex;flex-direction:column;gap:8px;font-weight:600}.penalty-page label span:not(.rate-label){font-size:13px;color:#666;font-weight:400}.penalty-page input,.penalty-page select{font:inherit;border:1px solid #aaa;border-radius:0;background:white;padding:13px;width:100%;min-width:0;color:#111}.penalty-page input:focus,.penalty-page select:focus,.penalty-page button:focus-visible{outline:3px solid #ffb17c;outline-offset:3px}.period{min-width:0;border:1px solid var(--line);padding:20px;margin:16px 0}.period legend{padding:0 8px;font-weight:700}.penalty-page button,.consultation{font:inherit;cursor:pointer;padding:12px 18px;margin:8px 8px 8px 0;border:1px solid #222;display:inline-block}.primary{background:#111;color:white}.primary:hover{background:var(--accent)}.secondary{background:white;color:#111}.remove{font-size:14px!important}.small,.privacy{font-size:14px;color:#666}.help{margin-top:48px;border-top:1px solid var(--line);padding-top:24px}.help a:not(.consultation){text-decoration:underline}.result-card{border:2px solid #111;padding:24px;margin-top:32px}.total{font-size:clamp(30px,5vw,48px);font-weight:750;line-height:1.2;margin:16px 0}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;font-size:14px}th,td{text-align:left;border-bottom:1px solid #ddd;padding:12px 8px;white-space:nowrap}.error{padding:18px;background:#fff0e6;border-left:4px solid #a13000}.period [hidden]{display:none!important}@media(max-width:600px){.form-head,.period-grid{grid-template-columns:1fr}.penalty-page{padding-top:24px}.period{padding:14px}.result-card{padding:16px}}@media print{header,.topbar,#penalty-form,.kicker,.lead,.notice,.privacy,.help,#result button{display:none!important}.penalty-page{max-width:none;padding:0}h1{font-size:24px!important}.result-card{border:0;padding:0}table{font-size:11px}th,td{white-space:normal}.table-wrap{overflow:visible}}
+</style><style>.penalty-page h1{overflow-wrap:anywhere}.penalty-page button{max-width:100%;white-space:normal}.penalty-page>nav{font-size:14px;margin-bottom:24px}.penalty-page>nav a{text-decoration:underline}.print-help{font-size:14px;color:#555}.table-wrap{max-width:100%}@page{size:A4;margin:12mm}@media print{.penalty-page>nav,.penalty-page>.small,noscript,.print-help{display:none!important}.penalty-page h1{overflow-wrap:normal}thead{display:table-header-group}tfoot{display:table-footer-group}tr{break-inside:avoid;page-break-inside:avoid}table{table-layout:auto}.result-card{margin-top:12px}.total{font-size:26px}a{color:inherit}}</style><script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "name": "Калькулятор договорной неустойки", "url": "https://advokat-strelkov.ru/kalkulyator-neustoyki", "inLanguage": "ru-RU", "dateModified": "2026-10-31", "description": "Расчёт договорной ежедневной пени: процент или фиксированная сумма, несколько периодов и предел."}</script></head><body>
+<div class="topbar"><div class="container">АДВОКАТ · КРАСНОДАР · РЕЕСТРОВЫЙ № 23/5042</div></div><header><nav class="container nav"><a class="logo" href="https://advokat-strelkov.ru/"><img src="data:image/webp;base64,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" alt="Адвокат Стрелков Виталий Николаевич" width="600" height="555"></a><a href="https://advokat-strelkov.ru/grazhdanskij-advokat-krasnodar">Гражданские споры →</a></nav></header>
+<main class="container penalty-page"><nav aria-label="Хлебные крошки"><a href="/">Главная</a> / <a href="/#spravochnaya-informaciya">Справочная информация</a> / Калькулятор неустойки</nav><div class="kicker">ПРАКТИЧЕСКИЙ СЕРВИС · ДОГОВОРНАЯ ПЕНЯ</div><h1>Калькулятор договорной неустойки</h1><p class="small">Обновлено 31 октября 2026 года</p><noscript><p class="error">Для расчёта нужен JavaScript. Формулы и ограничения доступны ниже; без JavaScript автоматический расчёт не выполняется.</p></noscript><p class="lead">Пеня за каждый календарный день — по ставке из вашего договора. С разбивкой по периодам и понятной формулой.</p>
+<div class="notice"><strong>Только договорная дневная пеня.</strong> Это не расчёт процентов по ст. 395 ГК РФ и не специальные калькуляторы по ЗоЗПП, ДДУ, ЖКХ или госконтрактам. Сервис не определяет право на взыскание, льготные периоды, моратории и основания снижения.</div>
+<form id="penalty-form" novalidate><div class="form-head"><label>Способ расчёта<select id="mode"><option value="percent">Процент от базы за день</option><option value="fixed">Фиксированная сумма за день</option></select></label><label>Общий предел по договору, ₽ <span>(если установлен)</span><input id="cap" inputmode="decimal" placeholder="Не ограничивать"></label></div><h2>Периоды начисления</h2><p id="date-help">Обе даты включены. Укажите именно первый и последний дни начисления, а не срок оплаты. При частичной оплате разделите периоды и укажите новую базу. День оплаты отнесите к нужному периоду согласно договору и применимым правилам.</p><div id="periods"></div><button class="secondary" type="button" id="add">+ Добавить период</button><p class="small">Не более 50 непересекающихся периодов одного обязательства. Пропуски между периодами не начисляются. База и дневная сумма: до 1 трлн ₽; ставка: до 1 000% в день, до 6 знаков после запятой.</p><button class="primary" type="submit">Рассчитать неустойку</button><button class="secondary" type="button" id="example">Заполнить пример</button><button class="secondary" type="reset">Очистить</button></form>
+<section id="result" aria-live="polite"><p>Заполните условия договора и нажмите «Рассчитать».</p></section><p class="privacy">Суммы и даты обрабатываются только в вашем браузере. Не отправляются на сервер и не сохраняются после закрытия страницы.</p>
+<section class="help"><h2>Как читать расчёт</h2><p><strong>Процент:</strong> база × ставка / 100 × число дней. <strong>Фиксированная сумма:</strong> сумма за день × число дней. Високосный день учитывается как обычный календарный день; деления на 365/366 нет.</p><p>Итог округляется до копеек один раз после сложения точных сумм периодов. В строках суммы показаны с округлением для удобства, поэтому сумма видимых строк может отличаться от итога на копейку. Общий предел применяется к итогу, только если вы его ввели. Если договор требует ежедневного округления, иной базы или порядка начисления — этот режим не подходит.</p><p>Калькулятор выполняет арифметику, а не подтверждает размер, который взыщет суд. Условие о неустойке, ответственность должника и возможность снижения проверяются отдельно (ст. 330–333 ГК РФ).</p><p>Официальный источник: <a href="https://www.vsrf.ru/Show_pdf.php?Id=10753" rel="noopener noreferrer">постановление Пленума Верховного Суда РФ от 24.03.2016 № 7 — о неустойке и ответственности за нарушение обязательств</a>, раздел «Неустойка». Для конкретного спора необходимо проверить договор, действующую норму и специальные ограничения на дату расчёта.</p><a class="primary consultation" href="https://advokat-strelkov.ru/#contacts">Проверить расчёт с адвокатом</a></section></main>
+<template id="period-template"><fieldset class="period"><legend></legend><div class="period-grid"><label>Первый день начисления<input type="date" name="start" min="1900-01-01" max="2100-12-31" aria-describedby="date-help" required></label><label>Последний день включительно<input type="date" name="end" min="1900-01-01" max="2100-12-31" required></label><label class="base-wrap">База начисления, ₽<input name="base" inputmode="decimal" placeholder="100000" required></label><label><span class="rate-label">Ставка, % в день</span><input name="rate" inputmode="decimal" placeholder="0,1" required></label></div><button class="remove secondary" type="button">Удалить период</button></fieldset></template><script>/* Pure local arithmetic. Contractual daily penalty only. No network/storage. */
+(function(root){
+'use strict';
+const DEN=100000000n;
+function decimal(s,places,max){
+ s=String(s).trim().replace(/[\s\u00a0]/g,'').replace(',','.');
+ if(!new RegExp('^\\d+(?:\\.\\d{1,'+places+'})?$').test(s))throw Error('Проверьте сумму или ставку: только положительное число, без экспоненты.');
+ const [a,b='']=s.split('.'); const n=BigInt(a)*10n**BigInt(places)+BigInt(b.padEnd(places,'0'));
+ if(n<=0n||n>max)throw Error('Сумма или ставка вне допустимого диапазона.');return n;
+}
+function date(s){
+ if(!/^\d{4}-\d{2}-\d{2}$/.test(s)||s<'1900-01-01'||s>'2100-12-31')throw Error('Укажите дату с 1900 по 2100 год.');
+ const n=Date.parse(s+'T00:00:00Z');if(!Number.isFinite(n)||new Date(n).toISOString().slice(0,10)!==s)throw Error('Несуществующая дата.');return n/86400000;
+}
+const money=s=>decimal(s,2,100000000000000n);
+const round=n=>(n+DEN/2n)/DEN;
+function calculate(mode,input,cap=''){
+ if(!['percent','fixed'].includes(mode)||!Array.isArray(input)||input.length<1||input.length>50)throw Error('Нужно от 1 до 50 периодов.');
+ const rows=input.map((r,i)=>{
+ const first=date(r.start),last=date(r.end);if(last<first)throw Error('Последний день не может быть раньше первого.');
+ const days=last-first+1;const rate=mode==='percent'?decimal(r.rate,6,1000000000n):money(r.rate);const base=mode==='percent'?money(r.base):0n;
+ const numerator=mode==='percent'?base*rate*BigInt(days):rate*BigInt(days)*DEN;
+ return {start:r.start,end:r.end,first,last,days,rate,base,numerator,rounded:round(numerator),index:i};
+ }).sort((a,b)=>a.first-b.first);
+ for(let i=1;i<rows.length;i++)if(rows[i].first<=rows[i-1].last)throw Error('Периоды пересекаются. Разделите их без повторяющихся дней.');
+ const raw=rows.reduce((n,r)=>n+r.numerator,0n),subtotal=round(raw);
+ const limit=String(cap).trim()?money(cap):null;
+ return {rows,subtotal,total:limit!==null&&subtotal>limit?limit:subtotal,limit,days:rows.reduce((n,r)=>n+r.days,0)};
+}
+function format(n){return (n/100n).toLocaleString('ru-RU')+','+(n%100n).toString().padStart(2,'0')+' ₽';}
+const api={calculate,format,date,decimal};if(typeof module!=='undefined')module.exports=api;else root.Penalty=api;
+})(typeof window==='undefined'?globalThis:window);
+</script><script>'use strict';
+const form=document.querySelector('#penalty-form'),periods=document.querySelector('#periods'),mode=document.querySelector('#mode'),result=document.querySelector('#result');
+function invalidate(){result.replaceChildren(Object.assign(document.createElement('p'),{textContent:'Условия изменены. Нажмите «Рассчитать», чтобы получить новый результат.'}));}
+function renumber(){[...periods.children].forEach((el,i)=>{el.querySelector('legend').textContent='Период '+(i+1);el.querySelector('.remove').disabled=periods.children.length===1;el.querySelector('.base-wrap').hidden=mode.value==='fixed';el.querySelector('[name=base]').required=mode.value==='percent';el.querySelector('.rate-label').textContent=mode.value==='fixed'?'Сумма, ₽ в день':'Ставка, % в день';});document.querySelector('#add').disabled=periods.children.length>=50;}
+function add(data={}){if(periods.children.length>=50)return;const el=document.querySelector('#period-template').content.firstElementChild.cloneNode(true);Object.entries(data).forEach(([k,v])=>el.querySelector('[name='+k+']').value=v);el.querySelector('.remove').onclick=()=>{el.remove();renumber();invalidate();};periods.append(el);renumber();}
+function cell(row,text,tag='td'){const el=document.createElement(tag);if(tag==='th')el.scope='col';el.textContent=text;row.append(el);}
+form.addEventListener('input',invalidate);mode.onchange=()=>{renumber();invalidate();};document.querySelector('#add').onclick=()=>{add();invalidate();};
+form.addEventListener('reset',()=>{setTimeout(()=>{periods.replaceChildren();add();invalidate();},0);});
+document.querySelector('#example').onclick=()=>{mode.value='percent';document.querySelector('#cap').value='';periods.replaceChildren();add({start:'2026-10-01',end:'2026-10-10',base:'100000',rate:'0,1'});add({start:'2026-10-11',end:'2026-10-30',base:'60000',rate:'0,1'});invalidate();};
+form.onsubmit=e=>{e.preventDefault();try{const input=[...periods.children].map(el=>Object.fromEntries([...el.querySelectorAll('input')].map(x=>[x.name,x.value])));const r=Penalty.calculate(mode.value,input,document.querySelector('#cap').value);const box=document.createElement('div');box.className='result-card';const title=document.createElement('h2');title.textContent='Предварительная договорная неустойка';box.append(title);const total=document.createElement('p');total.className='total';total.textContent=Penalty.format(r.total);box.append(total);const note=document.createElement('p');note.textContent=`Дней начисления: ${r.days}. До ограничения: ${Penalty.format(r.subtotal)}. `+(r.limit===null?'Общий предел не задан.':`Введённый предел: ${Penalty.format(r.limit)}.`);box.append(note);const wrap=document.createElement('div');wrap.className='table-wrap';const table=document.createElement('table'),thead=document.createElement('thead'),tbody=document.createElement('tbody'),head=document.createElement('tr');['Период (включительно)','Дней','База','Ставка в день','Начислено'].forEach(x=>cell(head,x,'th'));thead.append(head);table.append(thead,tbody);r.rows.forEach(row=>{const tr=document.createElement('tr');[row.start+' — '+row.end,String(row.days),mode.value==='percent'?Penalty.format(row.base):'—',mode.value==='percent'?(Number(row.rate)/1e6).toLocaleString('ru-RU',{maximumFractionDigits:6})+' %':Penalty.format(row.rate),Penalty.format(row.rounded)].forEach(x=>cell(tr,x));tbody.append(tr);});wrap.append(table);box.append(wrap);const desc=document.createElement('p');desc.textContent='Обе даты включены; итог округлён один раз до копеек. '+(mode.value==='percent'?'Формула: база × ставка / 100 × дни.':'Формула: сумма за день × дни.')+' Расчёт не учитывает моратории, специальные законные ограничения и возможное снижение судом. Проверьте основание, базу и период начисления.';box.append(desc);const print=document.createElement('button');print.textContent='Печать / сохранить PDF';print.className='secondary';print.onclick=()=>window.print();box.append(print);const save=document.createElement('button');save.type='button';save.className='secondary';save.textContent='Скачать расчёт (.txt)';save.onclick=()=>{const lines=['Калькулятор договорной неустойки','Предварительный расчёт: '+Penalty.format(r.total),note.textContent,'Период | Дней | База | Ставка в день | Начислено',...r.rows.map(row=>[row.start+' — '+row.end,row.days,mode.value==='percent'?Penalty.format(row.base):'—',mode.value==='percent'?(Number(row.rate)/1e6).toLocaleString('ru-RU',{maximumFractionDigits:6})+' %':Penalty.format(row.rate),Penalty.format(row.rounded)].join(' | ')),desc.textContent,'Источник расчёта: https://advokat-strelkov.ru/kalkulyator-neustoyki'];const url=URL.createObjectURL(new Blob(['﻿'+lines.join('\n')],{type:'text/plain;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download='contract-penalty-calculation.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};box.append(save);const printHelp=document.createElement('p');printHelp.className='print-help';printHelp.textContent='Для печати выберите в окне браузера принтер или «Сохранить как PDF». Если окно не открывается, скачайте текст расчёта.';box.append(printHelp);result.replaceChildren(box);}catch(err){const p=document.createElement('p');p.className='error';p.setAttribute('role','alert');p.textContent=err.message;result.replaceChildren(p);}};add();
+</script></body></html>
