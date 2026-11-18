@@ -1476,7 +1476,7 @@ footer{padding:0;background:#080808;color:#a5a5a0;text-transform:none;letter-spa
 .card-icon{margin-bottom:14px;color:#6e6e68}
 .bitter-card .card-icon{color:var(--accent)}
 .practice-card{position:relative;overflow:hidden;background:#fbfbf8!important;border-color:#cacac4!important}
-.practice-card:after{content:"";position:absolute;left:0;top:0;width:5px;height:100%;background:var(--accent)}
+/* Card accent stripe removed for unobstructed text. */
 .practice-card .num{color:#7a3b00!important}
 .practice-card p:before{content:"Ключевой вывод";display:block;margin-bottom:7px;color:#8b8b85;font-size:9px;font-weight:900;letter-spacing:.075em;text-transform:uppercase}
 .practice-card:hover{background:#fffdf8!important}
@@ -2115,3 +2115,12 @@ main > section:not(.hero){padding-top:56px;padding-bottom:56px}
   .home-page .home-current-grid{grid-template-columns:minmax(0,1fr)}
   .home-page .home-current-grid .card:nth-child(n){padding-left:0;padding-right:0}
 }
+
+/* Contact email wraps on narrow screens. */
+.contact-info a[href^="mailto:"]{overflow-wrap:anywhere;word-break:normal}
+.press-news-card p:before{content:none}
+
+/* 2026-11-08: reduce excess space above the homepage hero. */
+.home-page main > section.hero{padding-top:0}
+.home-page .hero .container{padding-top:16px}
+@media(max-width:680px){.home-page .hero .container{padding-top:14px}}
