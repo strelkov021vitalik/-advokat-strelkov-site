@@ -1,0 +1,31 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddDefaultCharset UTF-8
+RewriteEngine On
+# Keep certificate validation accessible.
+RewriteRule ^\.well-known/acme-challenge/ - [L]
+RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+RewriteRule ^ugolovnye-dela/?$ /ugolovnyj-advokat-krasnodar [R=301,L]
+RewriteRule ^grazhdanskie-dela/?$ /grazhdanskij-advokat-krasnodar [R=301,L]
+RewriteRule ^arbitrazhnye-spory/?$ /arbitrazhnyj-advokat-krasnodar [R=301,L]
+RewriteRule ^semejnye-spory/?$ /grazhdanskij-advokat-krasnodar [R=301,L]
+RewriteRule ^nasledstvennye-spory/?$ /grazhdanskij-advokat-krasnodar [R=301,L]
+RewriteRule ^nedvizhimost-zhilishchnye-spory/?$ /grazhdanskij-advokat-krasnodar [R=301,L]
+RewriteRule ^vzyskanie-dolgov/?$ /grazhdanskij-advokat-krasnodar [R=301,L]
+RewriteRule ^konsultaciya-advokata/?$ / [R=301,L]
+RewriteRule ^favicon\.ico$ logo-site.webp [L]
+# Existing verification HTML files retain their exact addresses.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+<IfModule mod_headers.c>
+SetEnvIf Host "^cq690923\.tw1\.ru$" technical_host
+Header set X-Robots-Tag "noindex, nofollow" env=technical_host
+</IfModule>
